@@ -1,12 +1,20 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1711678663
-game.gd::GDScript::-1::1711677419::0::1::::Game<>Node2D<>::
-game.tscn::PackedScene::2797175863716719602::1711677419::0::1::::<><>::res://game.gd<>uid://60njdy26rjet::::res://notecatcher.tscn<>uid://fyshm2trair4::::res://note.tscn
-icon.svg::CompressedTexture2D::2031690515253994435::1711677419::1711678625::1::::<><>::
-note.gd::GDScript::-1::1711677419::0::1::::Note<>CharacterBody2D<>::
-note.tscn::PackedScene::401595363590648751::1711677419::0::1::::<><>::res://note.gd<>uid://dkeut7rbcd6mm::::res://Graphics Assets/Note1.png
-NoteCatcher.gd::GDScript::-1::1711677419::0::1::::NoteCatcher<>Area2D<>::
-notecatcher.tscn::PackedScene::2228269185595824407::1711677419::0::1::::<><>::res://NoteCatcher.gd<>uid://xuqwd5sbll0k::::res://Graphics Assets/NoteCatcher.png
-::res://Graphics Assets/::1711678625
-Note1.png::CompressedTexture2D::7870657975472530360::1711677419::1711678625::1::::<><>::
-NoteCatcher.png::CompressedTexture2D::1656641922839914288::1711677419::1711678625::1::::<><>::
+::res://::1711677990
+::res://Graphics Assets/::1711673137
+Note1.png::CompressedTexture2D::7870657975472530360::1711673137::1711673137::1::::<><>::
+NoteCatcher.png::CompressedTexture2D::1656641922839914288::1711673014::1711673014::1::::<><>::
+::res://Scenes/::1711677541
+game.tscn::PackedScene::2797175863716719602::1711677540::0::1::::<><>::res://Scripts/game.gd<>uid://60njdy26rjet::::res://Scenes/Prefabs/notecatcher.tscn<>uid://gcbyjimmyci6::::res://Scenes/Charts/testchart.tscn
+::res://Scenes/Charts/::1711677551
+testchart.tscn::PackedScene::425365879013591479::1711677551::0::1::::<><>::uid://fyshm2trair4::::res://Scenes/Prefabs/note.tscn<>res://Scripts/chart.gd
+::res://Scenes/Prefabs/::1711677540
+note.tscn::PackedScene::401595363590648751::1711677540::0::1::::<><>::res://Scripts/note.gd<>uid://dkeut7rbcd6mm::::res://Graphics Assets/Note1.png
+notecatcher.tscn::PackedScene::2228269185595824407::1711676566::0::1::::<><>::res://Scripts/NoteCatcher.gd<>uid://xuqwd5sbll0k::::res://Graphics Assets/NoteCatcher.png
+::res://Scripts/::1711677238
+chart.gd::GDScript::-1::1711677219::0::1::::<>Node2D<>::
+game.gd::GDScript::-1::1711674028::0::1::::Game<>Node2D<>::
+note.gd::GDScript::-1::1711677238::0::1::::ChartNote<>CharacterBody2D<>::
+NoteCatcher.gd::GDScript::-1::1711677116::0::1::::NoteCatcher<>Area2D<>::
+::res://Sound Assets/::1711677994
+::res://Sound Assets/Songs/::1711678004
+03) Frank Ocean - Novacane.mp3::AudioStreamMP3::7570225227126192583::1711678004::1711678005::1::::<><>::

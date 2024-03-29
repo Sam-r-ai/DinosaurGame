@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://fyshm2trair4"]
+
+[ext_resource type="Script" path="res://Scripts/note.gd" id="1_udeow"]
+[ext_resource type="Texture2D" uid="uid://dkeut7rbcd6mm" path="res://Graphics Assets/Note1.png" id="2_y84qa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6y1i"]
+size = Vector2(159.5, 40)
+
+[node name="Note" type="CharacterBody2D"]
+position = Vector2(80, 20)
+script = ExtResource("1_udeow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t6y1i")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y84qa")
+metadata/_edit_lock_ = true
