@@ -1,13 +1,2 @@
-res://game.tscn
-res://note.gd
-res://NoteCatcher.gd
-res://game.gd
-res://note.tscn
-res://notecatcher.tscn
-res://Scenes/game.tscn
-res://Scenes/Prefabs/note.tscn
-res://Scenes/Prefabs/notecatcher.tscn
 res://Scenes/Charts/testchart.tscn
-res://Scripts/note.gd
-res://Scripts/NoteCatcher.gd
 res://Scripts/chart.gd
