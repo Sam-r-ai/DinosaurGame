@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bf38cv673a8wc"]
+
+[ext_resource type="Script" path="res://NoteCatcher.gd" id="1_hqg37"]
+[ext_resource type="Script" path="res://note.gd" id="1_ibrbb"]
+[ext_resource type="Texture2D" uid="uid://xuqwd5sbll0k" path="res://Graphics Assets/NoteCatcher.png" id="1_qpytp"]
+[ext_resource type="Texture2D" uid="uid://dkeut7rbcd6mm" path="res://Graphics Assets/Note1.png" id="3_48bp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6y1i"]
+size = Vector2(159.5, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvo7v"]
+atlas = ExtResource("1_qpytp")
+region = Rect2(0, 0, 180, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6da43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvo7v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="NoteCatcher" type="Area2D" parent="."]
+script = ExtResource("1_hqg37")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteCatcher"]
+shape = SubResource("RectangleShape2D_t6y1i")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NoteCatcher"]
+sprite_frames = SubResource("SpriteFrames_6da43")
+metadata/_edit_lock_ = true
+
+[node name="Note" type="CharacterBody2D" parent="."]
+position = Vector2(0, -172)
+script = ExtResource("1_ibrbb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Note"]
+visible = false
+shape = SubResource("RectangleShape2D_t6y1i")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Note"]
+texture = ExtResource("3_48bp1")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+metadata/_edit_lock_ = true
