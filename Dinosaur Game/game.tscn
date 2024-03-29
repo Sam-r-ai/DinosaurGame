@@ -1,53 +1,76 @@
-[gd_scene load_steps=8 format=3 uid="uid://bf38cv673a8wc"]
+[gd_scene load_steps=4 format=3 uid="uid://bf38cv673a8wc"]
 
-[ext_resource type="Script" path="res://NoteCatcher.gd" id="1_hqg37"]
-[ext_resource type="Script" path="res://note.gd" id="1_ibrbb"]
-[ext_resource type="Texture2D" uid="uid://xuqwd5sbll0k" path="res://Graphics Assets/NoteCatcher.png" id="1_qpytp"]
-[ext_resource type="Texture2D" uid="uid://dkeut7rbcd6mm" path="res://Graphics Assets/Note1.png" id="3_48bp1"]
+[ext_resource type="Script" path="res://game.gd" id="1_0yxpi"]
+[ext_resource type="PackedScene" uid="uid://60njdy26rjet" path="res://notecatcher.tscn" id="2_k3dno"]
+[ext_resource type="PackedScene" uid="uid://fyshm2trair4" path="res://note.tscn" id="4_nr55j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6y1i"]
-size = Vector2(159.5, 40)
+[node name="Game" type="Node2D"]
+script = ExtResource("1_0yxpi")
+note_speed = 160
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gvo7v"]
-atlas = ExtResource("1_qpytp")
-region = Rect2(0, 0, 180, 60)
+[node name="NoteCatchers" type="Node" parent="."]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6da43"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gvo7v")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[node name="NoteCatcher" parent="NoteCatchers" instance=ExtResource("2_k3dno")]
+position = Vector2(-384, 256)
+input_action = "Note 1"
 
-[node name="Node2D" type="Node2D"]
+[node name="NoteCatcher2" parent="NoteCatchers" instance=ExtResource("2_k3dno")]
+position = Vector2(-192, 256)
+input_action = "Note 2"
 
-[node name="NoteCatcher" type="Area2D" parent="."]
-script = ExtResource("1_hqg37")
+[node name="NoteCatcher3" parent="NoteCatchers" instance=ExtResource("2_k3dno")]
+position = Vector2(0, 256)
+input_action = "Note 3"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteCatcher"]
-shape = SubResource("RectangleShape2D_t6y1i")
-metadata/_edit_lock_ = true
+[node name="NoteCatcher4" parent="NoteCatchers" instance=ExtResource("2_k3dno")]
+position = Vector2(192, 256)
+input_action = "Note 4"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NoteCatcher"]
-sprite_frames = SubResource("SpriteFrames_6da43")
-metadata/_edit_lock_ = true
+[node name="NoteCatcher5" parent="NoteCatchers" instance=ExtResource("2_k3dno")]
+position = Vector2(384, 256)
+input_action = "Note 5"
 
-[node name="Note" type="CharacterBody2D" parent="."]
-position = Vector2(0, -172)
-script = ExtResource("1_ibrbb")
+[node name="Notes" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Note"]
-visible = false
-shape = SubResource("RectangleShape2D_t6y1i")
-metadata/_edit_lock_ = true
+[node name="Note" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(0, -448)
+game = NodePath("../..")
 
-[node name="Sprite2D" type="Sprite2D" parent="Note"]
-texture = ExtResource("3_48bp1")
-metadata/_edit_lock_ = true
+[node name="Note4" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(192, -576)
+game = NodePath("../..")
+
+[node name="Note5" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(384, -704)
+game = NodePath("../..")
+
+[node name="Note2" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(-384, -192)
+game = NodePath("../..")
+
+[node name="Note3" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(-192, -320)
+game = NodePath("../..")
+
+[node name="Note6" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(0, -1088)
+game = NodePath("../..")
+
+[node name="Note7" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(192, -1216)
+game = NodePath("../..")
+
+[node name="Note8" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(384, -1344)
+game = NodePath("../..")
+
+[node name="Note9" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(-384, -832)
+game = NodePath("../..")
+
+[node name="Note10" parent="Notes" node_paths=PackedStringArray("game") instance=ExtResource("4_nr55j")]
+position = Vector2(-192, -960)
+game = NodePath("../..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 metadata/_edit_lock_ = true
