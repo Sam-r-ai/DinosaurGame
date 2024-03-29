@@ -1,0 +1,24 @@
+# Godot-specific ignores
+export_presets.cfg
+export.cfg
+import/
+*.import
+# Godot generated files and folders
+.cache/
+# Ignore Godot user-specific settings
+*.godot/*.autoloads
+*.godot/app_userdata/
+# OS-specific ignores
+.DS_Store
+*.swp
+*~
+# Ignore specific project files that hold user-specific settings
+override.cfg
+# Add-ons you might not want to include
+addons/
+# If you're using a virtual environment for Python or other languages
+venv/
+.env
+# Ignore large files that you don't want to store in Git (consider using Git LFS)
+*.psd
+*.blend
