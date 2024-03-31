@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf38cv673a8wc"]
+[gd_scene load_steps=4 format=3 uid="uid://dg666kto3oo75"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_5onpy"]
 [ext_resource type="PackedScene" uid="uid://60njdy26rjet" path="res://Scenes/Prefabs/notecatcher.tscn" id="2_npwie"]
