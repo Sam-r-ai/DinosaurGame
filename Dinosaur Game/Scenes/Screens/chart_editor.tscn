@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlbq5jacm2d5u"]
+
+[ext_resource type="Script" path="res://Scripts/chart_editor.gd" id="1_7v430"]
+[ext_resource type="PackedScene" uid="uid://dcvcqm1svncfd" path="res://Scenes/Prefabs/cursor.tscn" id="1_43svf"]
+[ext_resource type="PackedScene" uid="uid://dvtnux5cehs7f" path="res://Scenes/Prefabs/note.tscn" id="2_8hw46"]
+[ext_resource type="AudioStream" uid="uid://df4creajdtckd" path="res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3" id="2_50w02"]
+[ext_resource type="Texture2D" uid="uid://qfohyfwc1srh" path="res://Graphics Assets/songprogressline.png" id="4_31gs5"]
+[ext_resource type="Texture2D" uid="uid://dhqfsddrjjs1m" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
+[ext_resource type="Script" path="res://Scripts/grid.gd" id="4_tmhq4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8j0ew"]
+font_size = 50
+
+[sub_resource type="GDScript" id="GDScript_p33wa"]
+script/source = "extends CharacterBody2D
+
+@export var area2d : Area2D;
+
+func _physics_process(delta):
+	move_and_slide();
+
+
+func _on_area_2d_area_entered(area):
+	if area is ChartNote:
+		on_note_entered(area);
+
+func on_note_entered(note : ChartNote):
+	note.on_hit();
+	print(\"note entered\");
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0b2g"]
+size = Vector2(960, 4)
+
+[node name="ChartEditor" type="Node2D" node_paths=PackedStringArray("cursor", "note_parent", "trigger_parent", "camera", "song_player", "song_progress_line", "grid")]
+script = ExtResource("1_7v430")
+song = ExtResource("2_50w02")
+bpm = 94.0
+cursor = NodePath("Cursor")
+note_prefab = ExtResource("2_8hw46")
+note_parent = NodePath("Notes")
+trigger_parent = NodePath("Triggers")
+camera = NodePath("Camera2D")
+song_player = NodePath("SongPlayer")
+song_progress_line = NodePath("SongProgressLine")
+grid = NodePath("Grid")
+
+[node name="SongPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Notes" type="Node2D" parent="."]
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="Cursor" parent="." node_paths=PackedStringArray("chart_editor") instance=ExtResource("1_43svf")]
+chart_editor = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, -316)
+
+[node name="UI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="Label" type="Label" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = 324.0
+text = "UI Design is my Passion"
+label_settings = SubResource("LabelSettings_8j0ew")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, -20)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_ptkg2")
+
+[node name="Grid" type="Node2D" parent="." node_paths=PackedStringArray("chart_editor")]
+position = Vector2(0, -640)
+script = ExtResource("4_tmhq4")
+chart_editor = NodePath("..")
+
+[node name="SongProgressLine" type="CharacterBody2D" parent="." node_paths=PackedStringArray("area2d")]
+script = SubResource("GDScript_p33wa")
+area2d = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="SongProgressLine"]
+process_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SongProgressLine/Area2D"]
+position = Vector2(480, 2)
+shape = SubResource("RectangleShape2D_o0b2g")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="SongProgressLine"]
+position = Vector2(480, 2)
+texture = ExtResource("4_31gs5")
+
+[connection signal="song_progress_moved" from="Cursor" to="." method="set_song_progress"]
+[connection signal="area_entered" from="SongProgressLine/Area2D" to="SongProgressLine" method="_on_area_2d_area_entered"]

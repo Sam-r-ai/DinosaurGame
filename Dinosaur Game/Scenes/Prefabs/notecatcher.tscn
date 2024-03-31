@@ -25,6 +25,7 @@ animations = [{
 script = ExtResource("1_8gu3y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_t6y1i")
 metadata/_edit_lock_ = true
 

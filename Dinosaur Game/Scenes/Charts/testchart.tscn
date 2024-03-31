@@ -1,38 +1,89 @@
-[gd_scene load_steps=4 format=3 uid="uid://gcbyjimmyci6"]
+[gd_scene load_steps=7 format=3 uid="uid://gcbyjimmyci6"]
 
-[ext_resource type="PackedScene" uid="uid://fyshm2trair4" path="res://Scenes/Prefabs/note.tscn" id="1_ih0pg"]
+[ext_resource type="PackedScene" uid="uid://dvtnux5cehs7f" path="res://Scenes/Prefabs/note.tscn" id="1_ih0pg"]
 [ext_resource type="Script" path="res://Scripts/chart.gd" id="1_l3jka"]
+[ext_resource type="Script" path="res://Scripts/track.gd" id="3_odrfb"]
 [ext_resource type="AudioStream" uid="uid://df4creajdtckd" path="res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3" id="3_pa1em"]
+[ext_resource type="PackedScene" uid="uid://comphhlhmgagi" path="res://Scenes/Prefabs/start_trigger.tscn" id="5_hv6cn"]
 
-[node name="Testchart" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_oo2ik"]
+script/source = "extends Node2D
+
+"
+
+[node name="Chart" type="Node2D" node_paths=PackedStringArray("song_player", "track", "note_parent")]
 script = ExtResource("1_l3jka")
+chart_scroll_speed = 400.0
+song_player = NodePath("SongPlayer")
+track = NodePath("Track")
+note_parent = NodePath("Track/Notes")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SongPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_pa1em")
 
-[node name="Note3" parent="." instance=ExtResource("1_ih0pg")]
-position = Vector2(176, 0)
+[node name="Track" type="CharacterBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_odrfb")
 
-[node name="Note4" parent="." instance=ExtResource("1_ih0pg")]
-position = Vector2(-176, 0)
+[node name="Notes" type="Node2D" parent="Track"]
+script = SubResource("GDScript_oo2ik")
 
-[node name="Note8" parent="." instance=ExtResource("1_ih0pg")]
-position = Vector2(0, 0)
-
-[node name="Note11" parent="." instance=ExtResource("1_ih0pg")]
-position = Vector2(0, -224)
-
-[node name="Note5" parent="." instance=ExtResource("1_ih0pg")]
+[node name="Note4" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
 position = Vector2(-352, 0)
 
-[node name="Note7" parent="." instance=ExtResource("1_ih0pg")]
-position = Vector2(-176, -112)
+[node name="Note7" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-176, -80)
 
-[node name="Note9" parent="." instance=ExtResource("1_ih0pg")]
-position = Vector2(176, -336)
+[node name="Note5" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-352, -160)
 
-[node name="Note10" parent="." instance=ExtResource("1_ih0pg")]
-position = Vector2(352, -448)
+[node name="Note8" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-176, -240)
 
-[node name="Note6" parent="." instance=ExtResource("1_ih0pg")]
-position = Vector2(352, 0)
+[node name="Note6" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-352, -320)
+
+[node name="Note9" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-176, -400)
+
+[node name="Note10" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-352, -480)
+
+[node name="Note11" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(0, -520)
+
+[node name="Note12" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-176, -560)
+
+[node name="Note13" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-176, -640)
+
+[node name="Note14" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(0, -720)
+
+[node name="Note15" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-176, -800)
+
+[node name="Note16" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(0, -880)
+
+[node name="Note17" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-176, -960)
+
+[node name="Note18" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(0, -1040)
+
+[node name="Note19" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(-176, -1120)
+
+[node name="Note20" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(176, -1160)
+
+[node name="Note21" parent="Track/Notes" instance=ExtResource("1_ih0pg")]
+position = Vector2(0, -1200)
+
+[node name="Triggers" type="Node2D" parent="Track"]
+
+[node name="StartTrigger" parent="Track/Triggers" instance=ExtResource("5_hv6cn")]
+position = Vector2(-528, 0)

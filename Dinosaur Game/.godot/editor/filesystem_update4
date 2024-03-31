@@ -1,2 +1,5 @@
-res://Scenes/Charts/testchart.tscn
+res://Scenes/Prefabs/start_trigger.tscn
 res://Scripts/chart.gd
+res://Scenes/Screens/chart_editor.tscn
+res://Scenes/Prefabs/cursor.tscn
+res://Scenes/Prefabs/note.tscn

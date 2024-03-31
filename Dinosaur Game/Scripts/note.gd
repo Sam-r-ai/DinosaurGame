@@ -1,13 +1,11 @@
-extends CharacterBody2D
+extends Area2D;
 
 class_name ChartNote;
 
-var game: Game;
+@export var anim : AnimatedSprite2D;
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	game = get_parent().game;
-	velocity = Vector2(0,game.note_speed);
+func on_hit():
+	anim.play("hit");
 
-func _physics_process(delta):
-	move_and_slide();
+func reset():
+	anim.play("default");

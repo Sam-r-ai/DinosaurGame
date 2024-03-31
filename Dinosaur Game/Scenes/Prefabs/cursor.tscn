@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcvcqm1svncfd"]
+
+[ext_resource type="Script" path="res://Scripts/cursor.gd" id="1_74r50"]
+[ext_resource type="Texture2D" uid="uid://5ld5i2psbarc" path="res://Graphics Assets/chartcursor.png" id="2_cjelj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ib8vf"]
+size = Vector2(158, 38)
+
+[node name="Cursor" type="Area2D"]
+script = ExtResource("1_74r50")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, -20)
+texture = ExtResource("2_cjelj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(80, -20)
+shape = SubResource("RectangleShape2D_ib8vf")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

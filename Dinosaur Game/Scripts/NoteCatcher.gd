@@ -4,22 +4,17 @@ class_name NoteCatcher;
 
 @export var input_action : String;
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if Input.is_action_just_pressed(input_action):
-		if get_overlapping_note():
-			var note = get_overlapping_note()
-			note.queue_free();
-			print("note hit!");
+	var overlapping_note = get_overlapping_note();
+	
+	if overlapping_note and Input.is_action_just_pressed(input_action):
+		overlapping_note.queue_free();
 
 func get_overlapping_note():
-	if has_overlapping_bodies():
-			var overlapping_bodies = get_overlapping_bodies();
-			for body in overlapping_bodies:
-				if body is ChartNote:
-					return body;
+	if has_overlapping_areas():
+			var overlapping_areas = get_overlapping_areas();
+			for area in overlapping_areas:
+				if area is ChartNote:
+					return area;
 			return null;
