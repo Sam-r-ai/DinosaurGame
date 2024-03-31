@@ -1,6 +1,10 @@
-res://Scenes/Screens/game.tscn
-res://Scripts/chart.gd
-res://Scenes/Prefabs/start_trigger.tscn
 res://Scenes/Screens/chart_editor.tscn
-res://Scenes/Prefabs/cursor.tscn
+res://Scripts/chart.gd
+res://Scripts/chart_test.gd
 res://Scenes/Prefabs/note.tscn
+res://Scripts/note.gd
+res://Scenes/Prefabs/cursor.tscn
+res://Scripts/cursor.gd
+res://Scenes/Prefabs/start_trigger.tscn
+res://Scenes/Charts/testchart.tscn
+res://Scripts/chart_editor.gd

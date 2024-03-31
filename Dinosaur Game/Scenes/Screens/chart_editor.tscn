@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlbq5jacm2d5u"]
+[gd_scene load_steps=12 format=3 uid="uid://dlbq5jacm2d5u"]
 
 [ext_resource type="Script" path="res://Scripts/chart_editor.gd" id="1_7v430"]
 [ext_resource type="PackedScene" uid="uid://dcvcqm1svncfd" path="res://Scenes/Prefabs/cursor.tscn" id="1_43svf"]
 [ext_resource type="PackedScene" uid="uid://dvtnux5cehs7f" path="res://Scenes/Prefabs/note.tscn" id="2_8hw46"]
 [ext_resource type="AudioStream" uid="uid://df4creajdtckd" path="res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3" id="2_50w02"]
 [ext_resource type="Texture2D" uid="uid://qfohyfwc1srh" path="res://Graphics Assets/songprogressline.png" id="4_31gs5"]
+[ext_resource type="Script" path="res://Scripts/chart_test.gd" id="4_ejosn"]
 [ext_resource type="Texture2D" uid="uid://dhqfsddrjjs1m" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
 [ext_resource type="Script" path="res://Scripts/grid.gd" id="4_tmhq4"]
 
@@ -26,7 +27,6 @@ func _on_area_2d_area_entered(area):
 
 func on_note_entered(note : ChartNote):
 	note.on_hit();
-	print(\"note entered\");
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0b2g"]
@@ -38,21 +38,28 @@ song = ExtResource("2_50w02")
 bpm = 94.0
 cursor = NodePath("Cursor")
 note_prefab = ExtResource("2_8hw46")
-note_parent = NodePath("Notes")
-trigger_parent = NodePath("Triggers")
+note_parent = NodePath("Chart/Notes")
+trigger_parent = NodePath("Chart/Triggers")
 camera = NodePath("Camera2D")
-song_player = NodePath("SongPlayer")
+song_player = NodePath("Chart/SongPlayer")
 song_progress_line = NodePath("SongProgressLine")
 grid = NodePath("Grid")
 
-[node name="SongPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Chart" type="Node2D" parent="." node_paths=PackedStringArray("chart_editor", "note_parent", "trigger_parent")]
+script = ExtResource("4_ejosn")
+chart_editor = NodePath("..")
+note_parent = NodePath("Notes")
+trigger_parent = NodePath("Triggers")
 
-[node name="Notes" type="Node2D" parent="."]
+[node name="SongPlayer" type="AudioStreamPlayer" parent="Chart"]
 
-[node name="Triggers" type="Node2D" parent="."]
+[node name="Notes" type="Node2D" parent="Chart"]
+
+[node name="Triggers" type="Node2D" parent="Chart"]
 
 [node name="Cursor" parent="." node_paths=PackedStringArray("chart_editor") instance=ExtResource("1_43svf")]
 chart_editor = NodePath("..")
+right_bound = 960.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, -316)
@@ -81,6 +88,39 @@ label_settings = SubResource("LabelSettings_8j0ew")
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="SaveButton" type="Button" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = -32.0
+offset_right = 560.0
+offset_bottom = 4.0
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 28.0
+offset_right = 560.0
+offset_bottom = 64.0
+text = "Load"
+
+[node name="ClearButton" type="Button" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 88.0
+offset_right = 560.0
+offset_bottom = 124.0
+text = "Clear
+"
+
+[node name="NothingButton" type="Button" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 148.0
+offset_right = 560.0
+offset_bottom = 184.0
+text = "Do Nothing"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(80, -20)
 scale = Vector2(2.5, 2.5)
@@ -108,4 +148,7 @@ position = Vector2(480, 2)
 texture = ExtResource("4_31gs5")
 
 [connection signal="song_progress_moved" from="Cursor" to="." method="set_song_progress"]
+[connection signal="pressed" from="Camera2D/UI/SaveButton" to="Chart" method="save_chart"]
+[connection signal="pressed" from="Camera2D/UI/LoadButton" to="Chart" method="load_chart"]
+[connection signal="pressed" from="Camera2D/UI/ClearButton" to="Chart" method="clear_chart"]
 [connection signal="area_entered" from="SongProgressLine/Area2D" to="SongProgressLine" method="_on_area_2d_area_entered"]

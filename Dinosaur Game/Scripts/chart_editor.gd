@@ -57,6 +57,7 @@ func change_spaces_per_beat(change_multiplier : float):
 			note.global_position.y = (new_position);
 		
 		song_progress_line_speed = grid.SPACE_SIZE.y*beats_per_second*grid_spaces_per_beat
+		song_progress_line.global_position.y *= change_multiplier;
 		
 		var cursor_grid_position = grid.get_grid_position(cursor.global_position);
 		var new_cursor_grid_position = cursor_grid_position;
@@ -66,7 +67,6 @@ func change_spaces_per_beat(change_multiplier : float):
 		var camera_offset_y = (new_cursor_grid_position.y - cursor_grid_position.y)*grid.SPACE_SIZE.y;
 		
 		camera.global_position.y += camera_offset_y;
-		song_progress_line.global_position.y += camera_offset_y;
 		
 	else:
 		print("spaces per beat cannot be less than 1");
