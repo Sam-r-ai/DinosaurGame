@@ -37,7 +37,6 @@ func load_chart():
 			if data:
 				if typeof(data) == TYPE_DICTIONARY:
 					note_dictionary = data;
-					print(note_dictionary);
 				else:
 					print("invalid type");
 			else:
