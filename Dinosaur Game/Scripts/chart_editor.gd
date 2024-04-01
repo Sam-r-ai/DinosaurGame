@@ -72,9 +72,8 @@ func change_spaces_per_beat(change_multiplier : float):
 		print("spaces per beat cannot be less than 1");
 
 func set_song_progress():
-	print("set song progress");
-	var time = song_progress_line.global_position.y / song_progress_line_speed * -1;
-	print(time);
+	var time = abs(song_progress_line.global_position.y / song_progress_line_speed);
+	print("set song progress: " + str(time) + " seconds");	
 	song_player.set_stream_paused(false);
 	song_player.seek(time);
 	pause_song();

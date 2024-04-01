@@ -38,16 +38,16 @@ func load_chart():
 				if typeof(data) == TYPE_DICTIONARY:
 					note_dictionary = data;
 				else:
-					print("invalid type");
+					print("chart load failed: invalid type");
 			else:
-				print("data = null");
+				print("chart load failed: data = null");
 	
 	clear_chart();
 	
 	
 	for note in note_dictionary:
 		if !typeof(note_dictionary[note]) == TYPE_ARRAY:
-			print("not array");
+			print("chart load failed: not array");
 		
 		var note_data = note_dictionary[note];
 		

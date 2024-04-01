@@ -38,6 +38,12 @@ func _input(event):
 			on_mouse_scroll(1);
 		elif event.button_index == MOUSE_BUTTON_MIDDLE:
 			on_middle_click();
+	elif event is InputEventMouseButton and event.is_released() and is_mouse_in_range():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			on_left_click_release();
+
+func on_left_click_release():
+	print("cursor : left mouse button released")
 
 func is_mouse_in_range():
 	var mouse_position = get_viewport().get_mouse_position();
@@ -54,7 +60,6 @@ func place_note():
 	
 	new_note.lane = grid.get_grid_position(global_position).x;
 	new_note.timestamp = new_note.global_position.y/(grid.SPACE_SIZE.y*chart_editor.beats_per_second*chart_editor.grid_spaces_per_beat)*-1;
-	
 
 func on_middle_click():
 	song_progress_line.global_position.y = global_position.y;
