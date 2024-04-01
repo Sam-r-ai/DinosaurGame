@@ -1,6 +1,9 @@
-res://Scenes/Screens/game.tscn
-res://Scripts/chart.gd
 res://Scenes/Prefabs/start_trigger.tscn
 res://Scenes/Screens/chart_editor.tscn
 res://Scenes/Prefabs/cursor.tscn
 res://Scenes/Prefabs/note.tscn
+res://Scenes/Screens/main_menu.tscn
+res://Scenes/Screens/Button.gd
+res://Scenes/Screens/main_menu.gd
+res://Scenes/Screens/level_selector.tscn
+res://Scenes/Screens/ColorRect.gd
