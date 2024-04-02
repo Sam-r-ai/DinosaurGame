@@ -12,3 +12,4 @@ res://Scenes/Screens/back button.gd
 res://Scenes/Screens/TextureButton.gd
 res://Scenes/dropdowntest.tscn
 res://Scripts/main menu quit button.gd
+res://Scenes/Screens/dinosaurs/OGDinosaur.tscn
