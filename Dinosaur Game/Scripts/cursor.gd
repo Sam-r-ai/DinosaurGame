@@ -5,6 +5,9 @@ class_name Cursor;
 signal song_progress_moved;
 
 @export var chart_editor : ChartEditor;
+@export var left_bound : float;
+@export var right_bound : float;
+
 
 @onready var grid = chart_editor.grid;
 @onready var scroll_speed = grid.SPACE_SIZE.y;
@@ -14,15 +17,17 @@ var selected_note : ChartNote;
 
 func _physics_process(delta):
 	var mouse_position = get_viewport().get_mouse_position();
-	global_position = mouse_position;
-	global_position.y += chart_editor.camera.global_position.y-648/2;
-	
-	global_position = grid.get_position_aligned_to_grid(global_position);
-	
-	global_position.x = clamp(global_position.x, grid.SPACE_SIZE.x, (grid.size.x-1)*grid.SPACE_SIZE.x);
+	if is_mouse_in_range():
+		global_position = mouse_position;
+		global_position.y += chart_editor.camera.global_position.y-648/2;
+		
+		global_position = grid.get_position_aligned_to_grid(global_position);
+		
+		global_position.x = clamp(global_position.x, grid.SPACE_SIZE.x, (grid.size.x-1)*grid.SPACE_SIZE.x);
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed:
+	
+	if event is InputEventMouseButton and event.pressed and is_mouse_in_range():
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			on_left_click();
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
@@ -33,6 +38,28 @@ func _input(event):
 			on_mouse_scroll(1);
 		elif event.button_index == MOUSE_BUTTON_MIDDLE:
 			on_middle_click();
+	elif event is InputEventMouseButton and event.is_released() and is_mouse_in_range():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			on_left_click_release();
+
+func on_left_click_release():
+	print("cursor : left mouse button released")
+
+func is_mouse_in_range():
+	var mouse_position = get_viewport().get_mouse_position();
+	if (left_bound < mouse_position.x) and (mouse_position.x < right_bound):
+		return true;
+	else:
+		return false;
+
+func place_note():
+	var new_note = chart_editor.note_prefab.instantiate();
+	new_note.global_position.x = global_position.x;
+	new_note.global_position.y = global_position.y;
+	chart_editor.note_parent.add_child(new_note);
+	
+	new_note.lane = grid.get_grid_position(global_position).x;
+	new_note.timestamp = new_note.global_position.y/(grid.SPACE_SIZE.y*chart_editor.beats_per_second*chart_editor.grid_spaces_per_beat)*-1;
 
 func on_middle_click():
 	song_progress_line.global_position.y = global_position.y;
@@ -49,13 +76,11 @@ func on_mouse_scroll(scroll_direction : float):
 func on_left_click():
 	var note_clicked = get_overlapping_note();
 	if !note_clicked:
-		var new_note = chart_editor.note_prefab.instantiate();
-		new_note.global_position.x = global_position.x;
-		new_note.global_position.y = global_position.y;
-		chart_editor.note_parent.add_child(new_note);
+		place_note();
 	else:
 		selected_note = note_clicked;
-		print(grid.get_grid_position(selected_note.global_position));
+		print("Lane: " + str(selected_note.lane));
+		print("Timestamp: " + str(selected_note.timestamp));
 
 func on_right_click():
 	var note = get_overlapping_note();
