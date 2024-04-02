@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnqd21g43fyy0"]
+[gd_scene load_steps=7 format=3 uid="uid://dcvhtur0o5tjl"]
 
 [ext_resource type="Script" path="res://Scenes/Screens/main_menu.gd" id="1_ebw68"]
 [ext_resource type="Texture2D" uid="uid://d72kg2dwqm3b" path="res://Graphics Assets/dinosaurgamelogo.png" id="2_e8os3"]
