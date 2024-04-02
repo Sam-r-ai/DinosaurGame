@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Dinosaur Game Github"
-run/main_scene="res://Scenes/Screens/main_menu.tscn"
+run/main_scene="res://Scenes/Screens/chart_select.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+
+[autoload]
+
+ChartData="*res://Scripts/Autoloads/chart_transfer_autoload.gd"
 
 [display]
 

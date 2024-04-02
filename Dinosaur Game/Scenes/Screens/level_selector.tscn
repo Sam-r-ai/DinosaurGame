@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://drg3xjmp1rknv"]
+[gd_scene load_steps=2 format=3 uid="uid://drg3xjmp1rknv"]
 
-[ext_resource type="Script" path="res://Scenes/Screens/level_selector.gd" id="1_8u1us"]
-[ext_resource type="Script" path="res://Scenes/Screens/back button.gd" id="2_gxg05"]
+[ext_resource type="Script" path="res://Scripts/level_selector.gd" id="1_8u1us"]
 
 [node name="level_selector" type="Node2D"]
 script = ExtResource("1_8u1us")
@@ -16,6 +15,5 @@ offset_top = 580.0
 offset_right = 139.0
 offset_bottom = 628.0
 text = "Back"
-script = ExtResource("2_gxg05")
 
 [connection signal="pressed" from="back button" to="." method="_on_back_button_pressed"]

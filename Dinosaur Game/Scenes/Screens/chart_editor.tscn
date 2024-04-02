@@ -1,15 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlbq5jacm2d5u"]
+[gd_scene load_steps=11 format=3 uid="uid://dlbq5jacm2d5u"]
 
 [ext_resource type="Script" path="res://Scripts/chart_editor.gd" id="1_7v430"]
 [ext_resource type="PackedScene" uid="uid://dcvcqm1svncfd" path="res://Scenes/Prefabs/cursor.tscn" id="1_43svf"]
 [ext_resource type="PackedScene" uid="uid://dvtnux5cehs7f" path="res://Scenes/Prefabs/note.tscn" id="2_8hw46"]
-[ext_resource type="AudioStream" uid="uid://df4creajdtckd" path="res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3" id="2_50w02"]
 [ext_resource type="Texture2D" uid="uid://qfohyfwc1srh" path="res://Graphics Assets/songprogressline.png" id="4_31gs5"]
-[ext_resource type="Script" path="res://Scripts/chart_test.gd" id="4_ejosn"]
+[ext_resource type="Script" path="res://Scripts/chart_save_manager.gd" id="4_ejosn"]
 [ext_resource type="Texture2D" uid="uid://dhqfsddrjjs1m" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
-[ext_resource type="AudioStream" uid="uid://ch2yfeko556a8" path="res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3" id="2_50w02"]
-[ext_resource type="Texture2D" uid="uid://bhpla10ao7lvj" path="res://Graphics Assets/songprogressline.png" id="4_31gs5"]
-[ext_resource type="Texture2D" uid="uid://c5thjiu12gkla" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
 [ext_resource type="Script" path="res://Scripts/grid.gd" id="4_tmhq4"]
 
 [sub_resource type="GDScript" id="GDScript_h3adw"]
@@ -45,9 +41,8 @@ func on_note_entered(note : ChartNote):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0b2g"]
 size = Vector2(960, 4)
 
-[node name="ChartEditor" type="Node2D" node_paths=PackedStringArray("cursor", "note_parent", "trigger_parent", "camera", "song_player", "song_progress_line", "grid")]
+[node name="ChartEditor" type="Node2D" node_paths=PackedStringArray("cursor", "note_parent", "trigger_parent", "camera", "song_player", "song_progress_line", "grid", "save_manager")]
 script = ExtResource("1_7v430")
-song = ExtResource("2_50w02")
 bpm = 94.0
 cursor = NodePath("Cursor")
 note_prefab = ExtResource("2_8hw46")
@@ -57,6 +52,7 @@ camera = NodePath("Camera2D")
 song_player = NodePath("SongPlayer")
 song_progress_line = NodePath("SongProgressLine")
 grid = NodePath("Grid")
+save_manager = NodePath("SaveManager")
 
 [node name="SaveManager" type="Node2D" parent="." node_paths=PackedStringArray("chart_editor", "note_parent", "trigger_parent", "chart_name_field")]
 script = ExtResource("4_ejosn")
@@ -128,6 +124,7 @@ grow_horizontal = 2
 text = "Chart File"
 
 [node name="SaveButton" type="Button" parent="Camera2D/EditorUI/TabContainer/Chart"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 107.0
 offset_right = 181.0
@@ -135,6 +132,7 @@ offset_bottom = 143.0
 text = "Save"
 
 [node name="LoadButton" type="Button" parent="Camera2D/EditorUI/TabContainer/Chart"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 167.0
 offset_right = 181.0
@@ -142,6 +140,7 @@ offset_bottom = 203.0
 text = "Load"
 
 [node name="ClearButton" type="Button" parent="Camera2D/EditorUI/TabContainer/Chart"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 227.0
 offset_right = 181.0
@@ -150,6 +149,7 @@ text = "Clear
 "
 
 [node name="NothingButton" type="Button" parent="Camera2D/EditorUI/TabContainer/Chart"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 287.0
 offset_right = 181.0

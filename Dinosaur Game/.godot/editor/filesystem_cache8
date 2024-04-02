@@ -1,36 +1,58 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1711865166
-::res://Graphics Assets/::1711854839
+::res://::1712042453
+::res://Charts/::1712042157
+::res://Graphics Assets/::1712022047
 chartcursor.png::CompressedTexture2D::2128609651833221004::1711772996::1711772996::1::::<><>::
+credits.png::CompressedTexture2D::856253240741904905::1712022047::1712018247::1::::<><>::
 cursor.png::CompressedTexture2D::8968164737331632362::1711768473::1711768473::1::::<><>::
+dinosaurgamelogo.png::CompressedTexture2D::3073968281415847113::1712022047::1712018247::1::::<><>::
 Note1.png::CompressedTexture2D::7870657975472530360::1711832995::1711832995::1::::<><>::
 Note1Hit.png::CompressedTexture2D::6660496996291713151::1711834133::1711834133::1::::<><>::
 NoteCatcher.png::CompressedTexture2D::1656641922839914288::1711673014::1711673014::1::::<><>::
+pixilart-drawing (2).png::CompressedTexture2D::2366780591727742207::1712022047::1712018247::1::::<><>::
+playbutton.png::CompressedTexture2D::7773893347919440846::1712022047::1712018247::1::::<><>::
+settings.png::CompressedTexture2D::7131670992949667923::1712022047::1712018247::1::::<><>::
 songprogressline.png::CompressedTexture2D::1134207194722602625::1711775589::1711775589::1::::<><>::
 StartTrigger.png::CompressedTexture2D::7683949892853875072::1711765630::1711765630::1::::<><>::
-::res://Scenes/::1711864460
-game.tscn::PackedScene::7646328964929028934::1711864460::0::1::::<><>::res://Scripts/game.gd<>uid://60njdy26rjet::::res://Scenes/Prefabs/notecatcher.tscn<>uid://gcbyjimmyci6::::res://Scenes/Charts/testchart.tscn
-::res://Scenes/Charts/::1711865133
-testchart.tscn::PackedScene::425365879013591479::1711865133::0::1::::<><>::uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>res://Scripts/chart.gd<>res://Scripts/track.gd<>uid://ch2yfeko556a8::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://comphhlhmgagi::::res://Scenes/Prefabs/start_trigger.tscn
-::res://Scenes/Prefabs/::1711864460
-cursor.tscn::PackedScene::7343142349170165165::1711864460::0::1::::<><>::res://Scripts/cursor.gd<>uid://5ld5i2psbarc::::res://Graphics Assets/chartcursor.png
-note.tscn::PackedScene::8673277236066879941::1711864460::0::1::::<><>::res://Scripts/note.gd<>uid://c15noa0xg28t4::::res://Graphics Assets/Note1Hit.png
+::res://Scenes/::1712042453
+chart_select.tscn::PackedScene::3482340775227017008::1712042329::0::1::::<><>::res://Scripts/chart_creator.gd<>uid://cbakb505pt4ew::::res://Scenes/Prefabs/chartbutton.tscn<>res://Scripts/chart_select_menu.gd
+dropdowntest.tscn::PackedScene::-1::1712022048::0::1::::<><>::
+::res://Scenes/Charts/::1712024510
+testchart.tscn::PackedScene::425365879013591479::1712024510::0::1::::<><>::uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>res://Scripts/chart.gd<>res://Scripts/track.gd<>uid://df4creajdtckd::::res://Sound Assets/Songs/Novacane.mp3<>uid://comphhlhmgagi::::res://Scenes/Prefabs/start_trigger.tscn
+::res://Scenes/Prefabs/::1712042329
+chartbutton.tscn::PackedScene::4843640782450306970::1712042329::0::1::::<><>::res://Scripts/chartbutton.gd
+cursor.tscn::PackedScene::7343142349170165165::1712042329::0::1::::<><>::res://Scripts/cursor.gd<>uid://5ld5i2psbarc::::res://Graphics Assets/chartcursor.png
+note.tscn::PackedScene::8673277236066879941::1712042329::0::1::::<><>::res://Scripts/note.gd<>uid://c15noa0xg28t4::::res://Graphics Assets/Note1Hit.png
 notecatcher.tscn::PackedScene::2228269185595824407::1711767008::0::1::::<><>::res://Scripts/NoteCatcher.gd<>uid://xuqwd5sbll0k::::res://Graphics Assets/NoteCatcher.png
-start_trigger.tscn::PackedScene::5781181351806823652::1711864460::0::1::::<><>::res://Scripts/start_trigger.gd<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png
-::res://Scenes/Screens/::1711864460
-chart_editor.tscn::PackedScene::7934429227371253364::1711864460::0::1::::<><>::res://Scripts/chart_editor.gd<>uid://dcvcqm1svncfd::::res://Scenes/Prefabs/cursor.tscn<>uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>uid://df4creajdtckd::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://qfohyfwc1srh::::res://Graphics Assets/songprogressline.png<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png<>res://Scripts/grid.gd
-game.tscn::PackedScene::2797175863716719602::1711864460::0::1::::<><>::res://Scripts/game.gd<>uid://gcbyjimmyci6::::res://Scenes/Charts/testchart.tscn<>uid://60njdy26rjet::::res://Scenes/Prefabs/notecatcher.tscn<>res://Scripts/trigger_reciever.gd
-::res://Scripts/::1711864330
-chart.gd::GDScript::-1::1711864330::0::1::::SongChart<>Node2D<>::
-chart_editor.gd::GDScript::-1::1711836267::0::1::::ChartEditor<>Node2D<>::
-cursor.gd::GDScript::-1::1711832479::0::1::::Cursor<>Area2D<>::
-game.gd::GDScript::-1::1711766651::0::1::::Game<>Node2D<>::
-grid.gd::GDScript::-1::1711829172::0::1::::Grid<>Node2D<>::
-note.gd::GDScript::-1::1711834328::0::1::::ChartNote<>Area2D<>::
-NoteCatcher.gd::GDScript::-1::1711765310::0::1::::NoteCatcher<>Area2D<>::
-start_trigger.gd::GDScript::-1::1711766320::0::1::::StartTrigger<>Area2D<>::
-track.gd::GDScript::-1::1711765252::0::1::::<>CharacterBody2D<>::
-trigger_reciever.gd::GDScript::-1::1711765777::0::1::::<>Area2D<>::
+start_trigger.tscn::PackedScene::5781181351806823652::1712042329::0::1::::<><>::res://Scripts/start_trigger.gd<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png
+::res://Scenes/Screens/::1712042441
+chart_editor.tscn::PackedScene::7934429227371253364::1712042329::0::1::::<><>::res://Scripts/chart_editor.gd<>uid://dcvcqm1svncfd::::res://Scenes/Prefabs/cursor.tscn<>uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>uid://qfohyfwc1srh::::res://Graphics Assets/songprogressline.png<>res://Scripts/chart_save_manager.gd<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png<>res://Scripts/grid.gd
+game.tscn::PackedScene::2797175863716719602::1711865244::0::1::::<><>::res://Scripts/game.gd<>uid://gcbyjimmyci6::::res://Scenes/Charts/testchart.tscn<>uid://60njdy26rjet::::res://Scenes/Prefabs/notecatcher.tscn<>res://Scripts/trigger_reciever.gd
+level_selector.tscn::PackedScene::8366600300472246527::1712042439::0::1::::<><>::res://Scripts/level_selector.gd
+main_menu.tscn::PackedScene::152156178935570953::1712042441::0::1::::<><>::res://Scripts/main_menu.gd<>uid://bj2b2quukwm3r::::res://Graphics Assets/dinosaurgamelogo.png<>uid://di0y5geujub2e::::res://Graphics Assets/playbutton.png<>uid://8yqsbk6ptcxb::::res://Graphics Assets/pixilart-drawing (2).png<>uid://mg1mo3odvm3j::::res://Graphics Assets/credits.png
+::res://Scripts/::1712042441
+chart.gd::GDScript::-1::1712034774::0::1::::SongChart<>Node2D<>::
+chartbutton.gd::GDScript::-1::1712040804::0::1::::<>Button<>::
+chart_creator.gd::GDScript::-1::1712041418::0::1::::<>Node<>::
+chart_editor.gd::GDScript::-1::1712039142::0::1::::ChartEditor<>Node2D<>::
+chart_save_manager.gd::GDScript::-1::1712041844::0::1::::SaveManager<>Node2D<>::
+chart_select_menu.gd::GDScript::-1::1712041396::0::1::::<>Control<>::
+cursor.gd::GDScript::-1::1712019453::0::1::::Cursor<>Area2D<>::
+game.gd::GDScript::-1::1711959579::0::1::::Game<>Node2D<>::
+grid.gd::GDScript::-1::1711959580::0::1::::Grid<>Node2D<>::
+level_selector.gd::GDScript::-1::1712022048::0::1::::<>Node2D<>::
+main_menu.gd::GDScript::-1::1712022048::0::1::::<>Control<>::
+note.gd::GDScript::-1::1712019453::0::1::::ChartNote<>Area2D<>::
+NoteCatcher.gd::GDScript::-1::1711959580::0::1::::NoteCatcher<>Area2D<>::
+popupmenu.gd::GDScript::-1::1712019453::0::1::::<>Control<>::
+start_trigger.gd::GDScript::-1::1711959580::0::1::::StartTrigger<>Area2D<>::
+track.gd::GDScript::-1::1711959580::0::1::::<>CharacterBody2D<>::
+trigger_reciever.gd::GDScript::-1::1711959580::0::1::::<>Area2D<>::
+::res://Scripts/Autoloads/::1712037644
+chart_transfer_autoload.gd::GDScript::-1::1712037644::0::1::::<>Node<>::
 ::res://Sound Assets/::1711677994
-::res://Sound Assets/Songs/::1711678005
-03) Frank Ocean - Novacane.mp3::AudioStreamMP3::7570225227126192583::1711678004::1711678005::1::::<><>::
+::res://Sound Assets/Songs/::1712035360
+Miss You So.mp3::AudioStreamMP3::2586377643192632950::1712035346::1712035352::1::::<><>::
+Novacane.mp3::AudioStreamMP3::7086991379972596846::1711678004::1712035316::1::::<><>::
+Sucka For Love.mp3::AudioStreamMP3::8901684887562022412::1712035342::1712035360::1::::<><>::
+::res://Sound Assets/Songs/Imports/::1712035159
