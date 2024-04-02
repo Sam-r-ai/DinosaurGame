@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkqostk1bab27"]
+[gd_scene load_steps=2 format=3 uid="uid://3adxhtwgwwwo"]
 
 [ext_resource type="Script" path="res://Scripts/popupmenu.gd" id="1_o1d5v"]
 
 [node name="EditorUI" type="Control" node_paths=PackedStringArray("chart_name_line")]
 layout_mode = 3
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,6 +50,7 @@ grow_horizontal = 2
 text = "Chart"
 
 [node name="SaveButton" type="Button" parent="TabContainer/Chart"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 107.0
 offset_right = 181.0
@@ -56,6 +58,7 @@ offset_bottom = 143.0
 text = "Save"
 
 [node name="LoadButton" type="Button" parent="TabContainer/Chart"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 167.0
 offset_right = 181.0
@@ -63,6 +66,7 @@ offset_bottom = 203.0
 text = "Load"
 
 [node name="ClearButton" type="Button" parent="TabContainer/Chart"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 227.0
 offset_right = 181.0
@@ -71,6 +75,7 @@ text = "Clear
 "
 
 [node name="NothingButton" type="Button" parent="TabContainer/Chart"]
+layout_mode = 0
 offset_left = 21.0
 offset_top = 287.0
 offset_right = 181.0

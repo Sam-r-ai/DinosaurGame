@@ -1,9 +1,13 @@
-res://Scripts/chart.gd
-res://Scenes/dropdowntest.tscn
 res://Scenes/Prefabs/start_trigger.tscn
 res://Scenes/Screens/chart_editor.tscn
 res://Scenes/Prefabs/cursor.tscn
 res://Scenes/Prefabs/note.tscn
-res://Scenes/Charts/testchart.tscn
-res://Scripts/popupmenu.gd
-res://Scripts/chart_test.gd
+res://Scenes/Screens/main_menu.tscn
+res://Scenes/Screens/Button.gd
+res://Scenes/Screens/main_menu.gd
+res://Scenes/Screens/level_selector.tscn
+res://Scenes/Screens/ColorRect.gd
+res://Scenes/Screens/level_selector.gd
+res://Scenes/Screens/back button.gd
+res://Scenes/Screens/TextureButton.gd
+res://Scenes/dropdowntest.tscn
