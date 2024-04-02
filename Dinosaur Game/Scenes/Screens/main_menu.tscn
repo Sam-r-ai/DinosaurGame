@@ -1,47 +1,91 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnqd21g43fyy0"]
+[gd_scene load_steps=7 format=3 uid="uid://bnqd21g43fyy0"]
 
 [ext_resource type="Script" path="res://Scenes/Screens/main_menu.gd" id="1_ebw68"]
 [ext_resource type="Texture2D" uid="uid://d72kg2dwqm3b" path="res://Graphics Assets/dinosaurgamelogo.png" id="2_e8os3"]
-[ext_resource type="Texture2D" uid="uid://7l1w5p87y84u" path="res://Graphics Assets/play button.png" id="3_en27i"]
+[ext_resource type="Texture2D" uid="uid://cnerqfsxu1yvd" path="res://Graphics Assets/playbutton.png" id="3_vq0mh"]
+[ext_resource type="Script" path="res://Scenes/Screens/TextureButton.gd" id="4_n3get"]
+[ext_resource type="Texture2D" uid="uid://ct7qe5tdlorsw" path="res://Graphics Assets/pixilart-drawing (2).png" id="5_pxh5o"]
+[ext_resource type="Texture2D" uid="uid://bj2p3wyprak6r" path="res://Graphics Assets/credits.png" id="6_vpw38"]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ebw68")
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1.0
-offset_top = 1.0
-offset_right = 1151.0
-offset_bottom = 645.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.968627, 0.937255, 0.921569, 1)
 metadata/_edit_lock_ = true
 
-[node name="play button" type="Button" parent="."]
-offset_left = 12.0
-offset_top = 480.0
-offset_right = 53.0
-offset_bottom = 511.0
-scale = Vector2(4.94186, 2.79847)
-text = "play"
-
 [node name="quit button" type="Button" parent="."]
-offset_left = 481.0
-offset_top = 468.0
-offset_right = 522.0
-offset_bottom = 499.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 371.0
+offset_top = 221.0
+offset_right = 410.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(4.94186, 2.79847)
 text = "quit"
 
 [node name="Dinosaurgamelogo" type="Sprite2D" parent="."]
-position = Vector2(545, 247)
-scale = Vector2(6.13, 5.64)
+position = Vector2(568, 240)
+scale = Vector2(6.13, 5.72)
 texture = ExtResource("2_e8os3")
+metadata/_edit_lock_ = true
 
-[node name="TextureButton" type="TextureButton" parent="."]
-offset_left = 461.0
-offset_top = 292.0
-offset_right = 797.0
-offset_bottom = 419.0
-texture_normal = ExtResource("3_en27i")
+[node name="play button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -11.0
+offset_right = -45.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture_normal = ExtResource("3_vq0mh")
+script = ExtResource("4_n3get")
+metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="play button" to="." method="_on_play_button_pressed"]
+[node name="settings button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 383.0
+offset_right = 532.0
+offset_bottom = 395.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("5_pxh5o")
+metadata/_edit_lock_ = true
+
+[node name="credits button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 452.0
+offset_right = 532.0
+offset_bottom = 464.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("6_vpw38")
+metadata/_edit_lock_ = true
+
 [connection signal="pressed" from="quit button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="play button" to="." method="_on_play_button_pressed"]
