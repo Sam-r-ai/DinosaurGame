@@ -1,18 +1,29 @@
 extends Node2D;
 
-const SAVE_PATH = "res://chart_saves.bin";
+class_name SaveManager;
+
+var chart_name = "default"
 
 @export var chart_editor : ChartEditor;
 @export var note_parent : Node2D;
 @export var trigger_parent: Node2D;
 @export var song : AudioStream;
+@export var chart_name_field : LineEdit;
 
 @onready var grid : Grid = chart_editor.grid;
+@onready var chart_path = "res://Charts/" + chart_name + ".bin";
 
 var note_dictionary = {};
 
+func _ready():
+	chart_name_field.text = chart_name;
+
+func update_chart_path():
+	chart_path = "res://Charts/" + chart_name + ".bin";
+	print("Chart Path Updated");
+
 func save_chart():
-	var chart_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE);
+	var chart_file = FileAccess.open(chart_path, FileAccess.WRITE);
 	
 	var note_count : int = 0;
 	note_dictionary.clear();
@@ -27,11 +38,11 @@ func save_chart():
 	var jstr = JSON.stringify(note_dictionary);
 	
 	chart_file.store_line(jstr);
-	
+	print("Chart: " + str(chart_name) + " Saved");
 
 func load_chart():
-	var chart_file = FileAccess.open(SAVE_PATH, FileAccess.READ);	
-	if FileAccess.file_exists(SAVE_PATH):
+	var chart_file = FileAccess.open(chart_path, FileAccess.READ);	
+	if FileAccess.file_exists(chart_path):
 		if !chart_file.eof_reached():
 			var data = JSON.parse_string(chart_file.get_line());
 			if data:
@@ -61,7 +72,14 @@ func load_chart():
 		
 		new_note.lane = note_data[0];
 		new_note.timestamp = note_data[1];
+		
+	print("Chart: " + str(chart_name) + " Loaded");
 
 func clear_chart():
 	for note in note_parent.get_children():
 		note.queue_free();
+
+func on_name_text_submitted(new_text : String):
+	chart_name = new_text.to_lower();
+	print("Chart Updated to: " + chart_name);
+	update_chart_path();

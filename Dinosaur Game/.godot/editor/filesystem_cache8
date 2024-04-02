@@ -1,36 +1,40 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1711952208
-::res://Graphics Assets/::1711854839
+::res://::1712016196
+::res://Graphics Assets/::1712011912
 chartcursor.png::CompressedTexture2D::2128609651833221004::1711772996::1711772996::1::::<><>::
 cursor.png::CompressedTexture2D::8968164737331632362::1711768473::1711768473::1::::<><>::
+dropdownbtn.png::CompressedTexture2D::2144290620316812166::1712011909::1712011909::1::::<><>::
+dropdownmenu.png::CompressedTexture2D::2157529850083323052::1712011912::1712011912::1::::<><>::
 Note1.png::CompressedTexture2D::7870657975472530360::1711832995::1711832995::1::::<><>::
 Note1Hit.png::CompressedTexture2D::6660496996291713151::1711834133::1711834133::1::::<><>::
 NoteCatcher.png::CompressedTexture2D::1656641922839914288::1711673014::1711673014::1::::<><>::
 songprogressline.png::CompressedTexture2D::1134207194722602625::1711775589::1711775589::1::::<><>::
 StartTrigger.png::CompressedTexture2D::7683949892853875072::1711765630::1711765630::1::::<><>::
-::res://Scenes/::1711865959
-::res://Scenes/Charts/::1711917606
-testchart.tscn::PackedScene::425365879013591479::1711917606::0::1::::<><>::uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>res://Scripts/chart.gd<>res://Scripts/track.gd<>uid://df4creajdtckd::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://comphhlhmgagi::::res://Scenes/Prefabs/start_trigger.tscn
-::res://Scenes/Prefabs/::1711917606
-cursor.tscn::PackedScene::7343142349170165165::1711917606::0::1::::<><>::res://Scripts/cursor.gd<>uid://5ld5i2psbarc::::res://Graphics Assets/chartcursor.png
-note.tscn::PackedScene::8673277236066879941::1711917606::0::1::::<><>::res://Scripts/note.gd<>uid://c15noa0xg28t4::::res://Graphics Assets/Note1Hit.png
+::res://Scenes/::1712015829
+dropdowntest.tscn::PackedScene::7895063728287958410::1712015829::0::1::::<><>::res://Scripts/popupmenu.gd
+::res://Scenes/Charts/::1712016454
+testchart.tscn::PackedScene::425365879013591479::1712016454::0::1::::<><>::uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>res://Scripts/chart.gd<>res://Scripts/track.gd<>uid://df4creajdtckd::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://comphhlhmgagi::::res://Scenes/Prefabs/start_trigger.tscn
+::res://Scenes/Prefabs/::1712016454
+cursor.tscn::PackedScene::7343142349170165165::1712016454::0::1::::<><>::res://Scripts/cursor.gd<>uid://5ld5i2psbarc::::res://Graphics Assets/chartcursor.png
+note.tscn::PackedScene::8673277236066879941::1712016454::0::1::::<><>::res://Scripts/note.gd<>uid://c15noa0xg28t4::::res://Graphics Assets/Note1Hit.png
 notecatcher.tscn::PackedScene::2228269185595824407::1711767008::0::1::::<><>::res://Scripts/NoteCatcher.gd<>uid://xuqwd5sbll0k::::res://Graphics Assets/NoteCatcher.png
-start_trigger.tscn::PackedScene::5781181351806823652::1711917606::0::1::::<><>::res://Scripts/start_trigger.gd<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png
-::res://Scenes/Screens/::1711917674
-chart_editor.tscn::PackedScene::7934429227371253364::1711917674::0::1::::<><>::res://Scripts/chart_editor.gd<>uid://dcvcqm1svncfd::::res://Scenes/Prefabs/cursor.tscn<>uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>uid://df4creajdtckd::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://qfohyfwc1srh::::res://Graphics Assets/songprogressline.png<>res://Scripts/chart_test.gd<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png<>res://Scripts/grid.gd
+start_trigger.tscn::PackedScene::5781181351806823652::1712016453::0::1::::<><>::res://Scripts/start_trigger.gd<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png
+::res://Scenes/Screens/::1712016454
+chart_editor.tscn::PackedScene::7934429227371253364::1712016454::0::1::::<><>::res://Scripts/chart_editor.gd<>uid://dcvcqm1svncfd::::res://Scenes/Prefabs/cursor.tscn<>uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>uid://df4creajdtckd::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://qfohyfwc1srh::::res://Graphics Assets/songprogressline.png<>res://Scripts/chart_test.gd<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png<>res://Scripts/grid.gd
 game.tscn::PackedScene::2797175863716719602::1711865244::0::1::::<><>::res://Scripts/game.gd<>uid://gcbyjimmyci6::::res://Scenes/Charts/testchart.tscn<>uid://60njdy26rjet::::res://Scenes/Prefabs/notecatcher.tscn<>res://Scripts/trigger_reciever.gd
-::res://Scripts/::1711917374
-chart.gd::GDScript::-1::1711913576::0::1::::SongChart<>Node2D<>::
-chart_editor.gd::GDScript::-1::1711916848::0::1::::ChartEditor<>Node2D<>::
-chart_test.gd::GDScript::-1::1711917374::0::1::::<>Node2D<>::
-cursor.gd::GDScript::-1::1711915322::0::1::::Cursor<>Area2D<>::
-game.gd::GDScript::-1::1711766651::0::1::::Game<>Node2D<>::
-grid.gd::GDScript::-1::1711829172::0::1::::Grid<>Node2D<>::
-note.gd::GDScript::-1::1711914213::0::1::::ChartNote<>Area2D<>::
-NoteCatcher.gd::GDScript::-1::1711765310::0::1::::NoteCatcher<>Area2D<>::
-start_trigger.gd::GDScript::-1::1711766320::0::1::::StartTrigger<>Area2D<>::
-track.gd::GDScript::-1::1711765252::0::1::::<>CharacterBody2D<>::
-trigger_reciever.gd::GDScript::-1::1711765777::0::1::::<>Area2D<>::
+::res://Scripts/::1712016453
+chart.gd::GDScript::-1::1712011258::0::1::::SongChart<>Node2D<>::
+chart_editor.gd::GDScript::-1::1711960066::0::1::::ChartEditor<>Node2D<>::
+chart_test.gd::GDScript::-1::1712016453::0::1::::SaveManager<>Node2D<>::
+cursor.gd::GDScript::-1::1711959956::0::1::::Cursor<>Area2D<>::
+game.gd::GDScript::-1::1711959579::0::1::::Game<>Node2D<>::
+grid.gd::GDScript::-1::1711959580::0::1::::Grid<>Node2D<>::
+note.gd::GDScript::-1::1711959580::0::1::::ChartNote<>Area2D<>::
+NoteCatcher.gd::GDScript::-1::1711959580::0::1::::NoteCatcher<>Area2D<>::
+popupmenu.gd::GDScript::-1::1712015801::0::1::::<>Control<>::
+start_trigger.gd::GDScript::-1::1711959580::0::1::::StartTrigger<>Area2D<>::
+track.gd::GDScript::-1::1711959580::0::1::::<>CharacterBody2D<>::
+trigger_reciever.gd::GDScript::-1::1711959580::0::1::::<>Area2D<>::
 ::res://Sound Assets/::1711677994
 ::res://Sound Assets/Songs/::1711678005
 03) Frank Ocean - Novacane.mp3::AudioStreamMP3::7570225227126192583::1711678004::1711678005::1::::<><>::
