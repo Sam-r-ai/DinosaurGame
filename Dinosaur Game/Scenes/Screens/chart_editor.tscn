@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://qfohyfwc1srh" path="res://Graphics Assets/songprogressline.png" id="4_31gs5"]
 [ext_resource type="Script" path="res://Scripts/chart_test.gd" id="4_ejosn"]
 [ext_resource type="Texture2D" uid="uid://dhqfsddrjjs1m" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
+[ext_resource type="AudioStream" uid="uid://ch2yfeko556a8" path="res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3" id="2_50w02"]
+[ext_resource type="Texture2D" uid="uid://bhpla10ao7lvj" path="res://Graphics Assets/songprogressline.png" id="4_31gs5"]
+[ext_resource type="Texture2D" uid="uid://c5thjiu12gkla" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
 [ext_resource type="Script" path="res://Scripts/grid.gd" id="4_tmhq4"]
 
 [sub_resource type="GDScript" id="GDScript_h3adw"]
