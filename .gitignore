@@ -3,7 +3,7 @@ export_presets.cfg
 export.cfg
 import/
 *.import
-*.bin
+#*.bin
  # If you want to ignore all cfg files, though be cautious as some cfg files may need to be included
 # Specific editor configuration files
 #*.cfg
