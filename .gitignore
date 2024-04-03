@@ -3,8 +3,20 @@ export_presets.cfg
 export.cfg
 import/
 *.import
+*.bin
+ # If you want to ignore all cfg files, though be cautious as some cfg files may need to be included
+# Specific editor configuration files
+#*.cfg
+
+**/editor_layout.cfg
+**/project_metadata.cfg
+
+**/filesystem_cache*
+**/uid_cache.bin
+
 # Godot generated files and folders
 .cache/
+*.cache
 # Ignore Godot user-specific settings
 *.godot/*.autoloads
 *.godot/app_userdata/
@@ -27,3 +39,4 @@ venv/
 .editor_layout.cfg
 .script_editor_cache.cfg
 .global_script_class_cache.cfg
+.godot\editor\script_editor_cache.cfg

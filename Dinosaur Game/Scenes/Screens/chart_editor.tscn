@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://qfohyfwc1srh" path="res://Graphics Assets/songprogressline.png" id="4_31gs5"]
 [ext_resource type="Script" path="res://Scripts/chart_save_manager.gd" id="4_ejosn"]
 [ext_resource type="Texture2D" uid="uid://dhqfsddrjjs1m" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
+[ext_resource type="AudioStream" uid="uid://ch2yfeko556a8" path="res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3" id="2_50w02"]
+[ext_resource type="Texture2D" uid="uid://bhpla10ao7lvj" path="res://Graphics Assets/songprogressline.png" id="4_31gs5"]
+[ext_resource type="Script" path="res://Scripts/chart_test.gd" id="4_ejosn"]
+[ext_resource type="Texture2D" uid="uid://c5thjiu12gkla" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
 [ext_resource type="Script" path="res://Scripts/grid.gd" id="4_tmhq4"]
 [ext_resource type="Script" path="res://Scripts/editor_ui_button.gd" id="5_4ujyd"]
 
@@ -70,18 +74,25 @@ offset_top = 36.0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TabContainer" type="TabContainer" parent="Camera2D/EditorUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 344.0
-offset_top = -360.0
-offset_right = 536.0
-offset_bottom = 276.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Panel" type="Panel" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 
+<<<<<<< Updated upstream
+[node name="Label" type="Label" parent="Camera2D/UI"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = 324.0
+text = "UI Design is my Passion"
+label_settings = SubResource("LabelSettings_8j0ew")
+horizontal_alignment = 1
+autowrap_mode = 2
+=======
 [node name="Chart" type="Control" parent="Camera2D/EditorUI/TabContainer"]
 layout_mode = 2
 
@@ -137,7 +148,15 @@ offset_right = 181.0
 offset_bottom = 263.0
 text = "Clear
 "
-script = ExtResource("5_4ujyd")
+
+[node name="NothingButton" type="Button" parent="Camera2D/EditorUI/TabContainer/Chart"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 287.0
+offset_right = 181.0
+offset_bottom = 323.0
+text = "Do Nothing"
+>>>>>>> Stashed changes
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(80, -20)

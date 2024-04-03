@@ -9,9 +9,10 @@ res://Scripts/chart_select_menu.gd
 res://Scenes/Prefabs/chartbutton.tscn
 res://Scripts/chartbutton.gd
 res://Scenes/Screens/level_selector.tscn
-res://Scenes/Screens/chart_editor.tscn
-res://Scenes/Screens/game.tscn
-res://Scripts/chart_editor.gd
-res://Scripts/chart_save_manager.gd
-res://Scripts/chart_creator.gd
-res://Scripts/editor_ui_button.gd
+res://Scenes/Screens/ColorRect.gd
+res://Scenes/Screens/level_selector.gd
+res://Scenes/Screens/back button.gd
+res://Scenes/Screens/TextureButton.gd
+res://Scenes/dropdowntest.tscn
+res://Scripts/main menu quit button.gd
+res://Scenes/Screens/dinosaurs/OGDinosaur.tscn
