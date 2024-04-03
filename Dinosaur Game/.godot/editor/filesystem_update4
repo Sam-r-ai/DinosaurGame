@@ -1,18 +1,5 @@
-res://Scripts/chart.gd
-res://Scenes/scene_manager.tscn
-res://Scripts/scene_manager.gd
 res://Scenes/Screens/main_menu.tscn
-res://Scripts/Classes/scene_root.gd
-res://Scripts/main_menu.gd
-res://Scenes/Screens/chart_select.tscn
-res://Scripts/chart_select_menu.gd
-res://Scenes/Prefabs/chartbutton.tscn
-res://Scripts/chartbutton.gd
+res://Scenes/Prefabs/note.tscn
 res://Scenes/Screens/level_selector.tscn
-res://Scenes/Screens/ColorRect.gd
-res://Scenes/Screens/level_selector.gd
-res://Scenes/Screens/back button.gd
-res://Scenes/Screens/TextureButton.gd
 res://Scenes/dropdowntest.tscn
-res://Scripts/main menu quit button.gd
 res://Scenes/Screens/dinosaurs/OGDinosaur.tscn

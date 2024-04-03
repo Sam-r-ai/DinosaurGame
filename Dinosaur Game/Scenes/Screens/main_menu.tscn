@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcvhtur0o5tjl"]
+[gd_scene load_steps=10 format=3 uid="uid://dcvhtur0o5tjl"]
 
-[ext_resource type="Script" path="res://Scenes/Screens/main_menu.gd" id="1_ebw68"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ebw68"]
 [ext_resource type="Texture2D" uid="uid://d72kg2dwqm3b" path="res://Graphics Assets/dinosaurgamelogo.png" id="2_e8os3"]
 [ext_resource type="Texture2D" uid="uid://cnerqfsxu1yvd" path="res://Graphics Assets/playbutton.png" id="3_vq0mh"]
-[ext_resource type="Script" path="res://Scenes/Screens/TextureButton.gd" id="4_n3get"]
 [ext_resource type="Texture2D" uid="uid://ct7qe5tdlorsw" path="res://Graphics Assets/pixilart-drawing (2).png" id="5_pxh5o"]
 [ext_resource type="Texture2D" uid="uid://bj2p3wyprak6r" path="res://Graphics Assets/credits.png" id="6_vpw38"]
 [ext_resource type="Texture2D" uid="uid://cblqjpa7csjla" path="res://Graphics Assets/useexitphoto.png" id="7_gbhrq"]
@@ -21,7 +20,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ebw68")
-scene_name = "main menu"
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsm2te0jmv1m"]
+
+[ext_resource type="Script" path="res://Scripts/popupmenu.gd" id="1_o1d5v"]
+
+[node name="EditorUI" type="Control" node_paths=PackedStringArray("chart_name_line")]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -193.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_o1d5v")
+chart_name_line = NodePath("TabContainer/Chart/Name")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Chart" type="Control" parent="TabContainer"]
+layout_mode = 2
+
+[node name="Name" type="LineEdit" parent="TabContainer/Chart"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.0
+offset_top = 49.0
+offset_right = 67.0
+offset_bottom = 80.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Chart"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_top = 17.0
+offset_right = 21.5
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Chart"
+
+[node name="SaveButton" type="Button" parent="TabContainer/Chart"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 107.0
+offset_right = 181.0
+offset_bottom = 143.0
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="TabContainer/Chart"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 167.0
+offset_right = 181.0
+offset_bottom = 203.0
+text = "Load"
+
+[node name="ClearButton" type="Button" parent="TabContainer/Chart"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 227.0
+offset_right = 181.0
+offset_bottom = 263.0
+text = "Clear
+"
+
+[node name="NothingButton" type="Button" parent="TabContainer/Chart"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 287.0
+offset_right = 181.0
+offset_bottom = 323.0
+text = "Do Nothing"
+
+[connection signal="tab_button_pressed" from="TabContainer" to="." method="_on_tab_container_tab_button_pressed"]
