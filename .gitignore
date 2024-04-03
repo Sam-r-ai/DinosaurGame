@@ -38,3 +38,4 @@ venv/
 .editor_layout.cfg
 .script_editor_cache.cfg
 .global_script_class_cache.cfg
+.godot\editor\script_editor_cache.cfg
