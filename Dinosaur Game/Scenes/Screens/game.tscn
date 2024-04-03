@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf38cv673a8wc"]
+[gd_scene load_steps=5 format=3 uid="uid://bf38cv673a8wc"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_5l3bv"]
-[ext_resource type="PackedScene" uid="uid://gcbyjimmyci6" path="res://Scenes/Charts/testchart.tscn" id="2_ab2fu"]
 [ext_resource type="PackedScene" uid="uid://60njdy26rjet" path="res://Scenes/Prefabs/notecatcher.tscn" id="3_661wb"]
 [ext_resource type="Script" path="res://Scripts/trigger_reciever.gd" id="4_0lp8j"]
 
@@ -10,11 +9,7 @@ size = Vector2(116, 20)
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("chart")]
 script = ExtResource("1_5l3bv")
-chart = NodePath("Chart")
-
-[node name="Chart" parent="." node_paths=PackedStringArray("game") instance=ExtResource("2_ab2fu")]
-bpm = 94.0
-game = NodePath("..")
+chart = NodePath("")
 
 [node name="NoteCatchers" type="Node2D" parent="."]
 

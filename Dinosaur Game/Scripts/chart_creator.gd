@@ -53,7 +53,6 @@ func initialize_chart():
 	var jstr = JSON.stringify(save_dictionary);
 	
 	chart_file.store_line(jstr);
-	ChartData.chart_path = chart_path;
 	print("Chart: " + str(name) + " Created");
 	
 	get_tree().change_scene_to_file("res://Scenes/Screens/chart_editor.tscn");

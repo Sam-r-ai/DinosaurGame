@@ -7,19 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/chart_save_manager.gd" id="4_ejosn"]
 [ext_resource type="Texture2D" uid="uid://dhqfsddrjjs1m" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
 [ext_resource type="Script" path="res://Scripts/grid.gd" id="4_tmhq4"]
-
-[sub_resource type="GDScript" id="GDScript_h3adw"]
-script/source = "extends LineEdit
-
-signal chart_path_updated(name);
-
-func _on_text_submitted(new_text):
-	release_focus();
-
-func _on_focus_exited():
-	chart_path_updated.emit(text);
-	release_focus();
-"
+[ext_resource type="Script" path="res://Scripts/editor_ui_button.gd" id="5_4ujyd"]
 
 [sub_resource type="GDScript" id="GDScript_p33wa"]
 script/source = "extends CharacterBody2D
@@ -54,12 +42,12 @@ song_progress_line = NodePath("SongProgressLine")
 grid = NodePath("Grid")
 save_manager = NodePath("SaveManager")
 
-[node name="SaveManager" type="Node2D" parent="." node_paths=PackedStringArray("chart_editor", "note_parent", "trigger_parent", "chart_name_field")]
+[node name="SaveManager" type="Node2D" parent="." node_paths=PackedStringArray("chart_editor", "note_parent", "trigger_parent", "chart_name_label")]
 script = ExtResource("4_ejosn")
 chart_editor = NodePath("..")
 note_parent = NodePath("../Notes")
 trigger_parent = NodePath("../Triggers")
-chart_name_field = NodePath("../Camera2D/EditorUI/TabContainer/Chart/Name")
+chart_name_label = NodePath("../Camera2D/EditorUI/TabContainer/Chart/Name")
 
 [node name="SongPlayer" type="AudioStreamPlayer" parent="."]
 
@@ -97,7 +85,7 @@ grow_vertical = 2
 [node name="Chart" type="Control" parent="Camera2D/EditorUI/TabContainer"]
 layout_mode = 2
 
-[node name="Name" type="LineEdit" parent="Camera2D/EditorUI/TabContainer/Chart"]
+[node name="Name" type="Label" parent="Camera2D/EditorUI/TabContainer/Chart"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -108,8 +96,7 @@ offset_right = 67.0
 offset_bottom = 80.0
 grow_horizontal = 2
 text = "New Chart"
-alignment = 1
-script = SubResource("GDScript_h3adw")
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="Camera2D/EditorUI/TabContainer/Chart"]
 layout_mode = 1
@@ -122,6 +109,7 @@ offset_right = 21.5
 offset_bottom = 40.0
 grow_horizontal = 2
 text = "Chart File"
+horizontal_alignment = 1
 
 [node name="SaveButton" type="Button" parent="Camera2D/EditorUI/TabContainer/Chart"]
 layout_mode = 0
@@ -130,6 +118,7 @@ offset_top = 107.0
 offset_right = 181.0
 offset_bottom = 143.0
 text = "Save"
+script = ExtResource("5_4ujyd")
 
 [node name="LoadButton" type="Button" parent="Camera2D/EditorUI/TabContainer/Chart"]
 layout_mode = 0
@@ -138,6 +127,7 @@ offset_top = 167.0
 offset_right = 181.0
 offset_bottom = 203.0
 text = "Load"
+script = ExtResource("5_4ujyd")
 
 [node name="ClearButton" type="Button" parent="Camera2D/EditorUI/TabContainer/Chart"]
 layout_mode = 0
@@ -147,14 +137,7 @@ offset_right = 181.0
 offset_bottom = 263.0
 text = "Clear
 "
-
-[node name="NothingButton" type="Button" parent="Camera2D/EditorUI/TabContainer/Chart"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 287.0
-offset_right = 181.0
-offset_bottom = 323.0
-text = "Do Nothing"
+script = ExtResource("5_4ujyd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(80, -20)
@@ -183,9 +166,6 @@ position = Vector2(480, 2)
 texture = ExtResource("4_31gs5")
 
 [connection signal="song_progress_moved" from="Cursor" to="." method="set_song_progress"]
-[connection signal="chart_path_updated" from="Camera2D/EditorUI/TabContainer/Chart/Name" to="SaveManager" method="on_name_text_submitted"]
-[connection signal="focus_exited" from="Camera2D/EditorUI/TabContainer/Chart/Name" to="Camera2D/EditorUI/TabContainer/Chart/Name" method="_on_focus_exited"]
-[connection signal="text_submitted" from="Camera2D/EditorUI/TabContainer/Chart/Name" to="Camera2D/EditorUI/TabContainer/Chart/Name" method="_on_text_submitted"]
 [connection signal="pressed" from="Camera2D/EditorUI/TabContainer/Chart/SaveButton" to="SaveManager" method="save_chart"]
 [connection signal="pressed" from="Camera2D/EditorUI/TabContainer/Chart/LoadButton" to="SaveManager" method="load_chart"]
 [connection signal="pressed" from="Camera2D/EditorUI/TabContainer/Chart/ClearButton" to="SaveManager" method="clear_chart"]

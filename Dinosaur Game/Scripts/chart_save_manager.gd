@@ -8,13 +8,12 @@ var chart_name = "default"
 @export var note_parent : Node2D;
 @export var trigger_parent: Node2D;
 @export var song : AudioStream;
-@export var chart_name_field : LineEdit;
+@export var chart_name_label : Label;
 
 @onready var grid : Grid = chart_editor.grid;
-@onready var chart_path = ChartData.chart_path;
 
 
-
+var chart_path : String;
 var note_dictionary = {};
 
 @onready var save_dictionary = {
@@ -24,16 +23,12 @@ var note_dictionary = {};
 	"notes": note_dictionary
 };
 
-func _ready():
-	chart_name_field.text = chart_name;
-	update_chart_path();
-
-func update_chart_path():
-	chart_path = "res://Charts/" + chart_name + ".bin";
-	print("Chart Path Updated");
+func update_chart_path(path : String):
+	chart_path = path;
+	chart_name_label.text = chart_name;
 
 func save_chart():
-	update_chart_path();
+	print(" ");
 	print("Chart Save Path: " + str(chart_path));
 	var chart_file = FileAccess.open(chart_path, FileAccess.WRITE);
 	
@@ -52,14 +47,12 @@ func save_chart():
 	
 	chart_file.store_line(jstr);
 	print("Chart: " + str(chart_name) + " Saved");
-	print(note_dictionary);
-	print(save_dictionary);
 
 func load_chart():
-	update_chart_path();
+	print(" ");
 	print("Chart Load Path: " + str(chart_path));
-	var chart_file = FileAccess.open(ChartData.chart_path, FileAccess.READ);
-	if FileAccess.file_exists(ChartData.chart_path):
+	var chart_file = FileAccess.open(chart_path, FileAccess.READ);
+	if FileAccess.file_exists(chart_path):
 		if !chart_file.eof_reached():
 			var data = JSON.parse_string(chart_file.get_line());
 			if data:
@@ -70,7 +63,6 @@ func load_chart():
 			else:
 				print("chart load failed: data = null");
 	
-	print(save_dictionary);
 	
 	clear_chart();
 	
@@ -96,7 +88,7 @@ func load_chart():
 		new_note.lane = note_data[0];
 		new_note.timestamp = note_data[1];
 	
-	chart_name_field.text = chart_name;
+	chart_name_label.text = chart_name;
 	print("Chart: " + str(chart_name) + " Loaded");
 
 func clear_chart():
@@ -104,6 +96,4 @@ func clear_chart():
 		note.queue_free();
 
 func on_name_text_submitted(new_text : String):
-	chart_name = new_text.to_lower();
-	print("Chart Updated to: " + chart_name);
-	update_chart_path();
+	pass;
