@@ -1,10 +1,10 @@
-extends Node2D
+extends SceneRoot;
 
 class_name ChartEditor;
 
 @export_category("Parameters")
 
-@export var song : AudioStream;
+var song : AudioStream;
 @export var bpm : float = 0;
 @export var grid_spaces_per_beat = 4;
 @export var camera_follow_song_bar : bool = false;
@@ -19,6 +19,7 @@ class_name ChartEditor;
 @export var song_player : AudioStreamPlayer;
 @export var song_progress_line : CharacterBody2D;
 @export var grid : Grid;
+@export var save_manager : SaveManager; 
 
 
 @onready var seconds_per_beat = 60/bpm;
@@ -29,9 +30,7 @@ class_name ChartEditor;
 @onready var grid_camera_offset = grid.global_position - camera.global_position;
 
 func _ready():
-	song_player.stream = song;
-	song_player.play();
-	song_player.set_stream_paused(true);
+	pass
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("Editor - Play or Pause"):
@@ -40,8 +39,14 @@ func _physics_process(delta):
 	if song_player.playing and camera_follow_song_bar:
 		camera.global_position.y -= song_progress_line_speed*delta;
 
-func save_chart():
-	pass;
+func load_scene_parameters(new_scene_parameters):
+	scene_parameters = new_scene_parameters;
+	save_manager.update_chart_path(scene_parameters["chart path"]);
+	save_manager.load_chart();
+	
+	song_player.stream = song;
+	song_player.play();
+	song_player.set_stream_paused(true);
 
 func change_spaces_per_beat(change_multiplier : float):
 	if (grid_spaces_per_beat*change_multiplier >= 1):

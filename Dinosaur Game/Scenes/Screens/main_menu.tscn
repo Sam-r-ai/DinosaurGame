@@ -21,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ebw68")
+scene_name = "main menu"
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -54,7 +55,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
 texture_normal = ExtResource("3_vq0mh")
-script = ExtResource("4_n3get")
 metadata/_edit_lock_ = true
 
 [node name="settings button" type="TextureButton" parent="."]
