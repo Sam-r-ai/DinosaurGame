@@ -16,6 +16,7 @@ import/
 
 # Godot generated files and folders
 .cache/
+*.cache
 # Ignore Godot user-specific settings
 *.godot/*.autoloads
 *.godot/app_userdata/
