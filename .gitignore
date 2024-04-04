@@ -3,6 +3,10 @@ export_presets.cfg
 export.cfg
 import/
 *.import
+
+.godot/
+*.translation
+
 #*.bin
  # If you want to ignore all cfg files, though be cautious as some cfg files may need to be included
 # Specific editor configuration files
@@ -17,9 +21,11 @@ import/
 # Godot generated files and folders
 .cache/
 *.cache
+
 # Ignore Godot user-specific settings
 *.godot/*.autoloads
 *.godot/app_userdata/
+
 # OS-specific ignores
 .DS_Store
 *.swp
@@ -28,6 +34,7 @@ import/
 override.cfg
 # Add-ons you might not want to include
 addons/
+
 # If you're using a virtual environment for Python or other languages
 venv/
 .env
