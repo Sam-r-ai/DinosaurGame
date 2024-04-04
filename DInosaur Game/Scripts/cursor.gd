@@ -1,0 +1,120 @@
+extends Area2D
+
+class_name Cursor;
+
+signal song_progress_moved;
+
+@export var chart_editor : ChartEditor;
+@export var left_bound : float;
+@export var right_bound : float;
+
+
+@onready var grid = chart_editor.grid;
+@onready var scroll_speed = grid.SPACE_SIZE.y;
+@onready var song_progress_line = chart_editor.song_progress_line;
+
+var selected_note : ChartNote;
+var new_note : ChartNote;
+var new_note_hold_bar : NoteHoldBar;
+
+var click_position : Vector2;
+var holding_click : bool = false;
+
+func _physics_process(delta):
+	var mouse_position = get_viewport().get_mouse_position();
+	if is_mouse_in_range():
+		global_position = mouse_position;
+		global_position.y += chart_editor.camera.global_position.y-648/2;
+		
+		global_position = grid.get_position_aligned_to_grid(global_position);
+		
+		global_position.x = clamp(global_position.x, grid.SPACE_SIZE.x, (grid.size.x-1)*grid.SPACE_SIZE.x);
+	
+	if holding_click and new_note_hold_bar and (global_position.y <= click_position.y):
+		new_note_hold_bar.update_length(click_position.y - global_position.y);
+
+func _input(event):
+	
+	if event is InputEventMouseButton and event.pressed and is_mouse_in_range():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			on_left_click();
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			on_right_click();
+		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			on_mouse_scroll(-1);
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			on_mouse_scroll(1);
+		elif event.button_index == MOUSE_BUTTON_MIDDLE:
+			on_middle_click();
+	elif event is InputEventMouseButton and event.is_released() and is_mouse_in_range():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			on_left_click_release();
+
+func on_left_click_release():
+	holding_click = false;
+	
+	if (global_position.y < click_position.y):
+		new_note_hold_bar.update_length(click_position.y - global_position.y);
+		new_note.hold_time = chart_editor.distance_to_seconds(new_note_hold_bar.length);
+		print(new_note.hold_time);
+	else:
+		new_note_hold_bar.queue_free();
+	
+	click_position = Vector2(0,0);
+
+func is_mouse_in_range():
+	var mouse_position = get_viewport().get_mouse_position();
+	if (left_bound < mouse_position.x) and (mouse_position.x < right_bound):
+		return true;
+	else:
+		return false;
+
+func place_note():
+	holding_click = true;
+	click_position = global_position;
+	
+	new_note = chart_editor.note_prefab.instantiate();
+	new_note.global_position.x = global_position.x;
+	new_note.global_position.y = global_position.y;
+	chart_editor.note_parent.add_child(new_note);
+	
+	new_note.lane = grid.get_grid_position(global_position).x;
+	new_note.timestamp = new_note.global_position.y/(grid.SPACE_SIZE.y*chart_editor.beats_per_second*chart_editor.grid_spaces_per_beat)*-1;
+	
+	new_note_hold_bar = chart_editor.note_hold_prefab.instantiate();
+	new_note.add_child(new_note_hold_bar);
+
+func on_middle_click():
+	song_progress_line.global_position.y = global_position.y;
+	if (song_progress_line.global_position.y > 0):
+		song_progress_line.global_position.y = 0;
+	song_progress_moved.emit();
+
+func on_mouse_scroll(scroll_direction : float):
+	if Input.is_action_pressed("Shift"):
+		chart_editor.change_spaces_per_beat(2.0**-scroll_direction);
+	else:
+		chart_editor.camera.global_position.y += scroll_direction*scroll_speed;
+
+func on_left_click():
+	var note_clicked = get_overlapping_note();
+	if !note_clicked:
+		place_note();
+	else:
+		selected_note = note_clicked;
+		print("Lane: " + str(selected_note.lane));
+		print("Timestamp: " + str(selected_note.timestamp));
+
+func on_right_click():
+	var note = get_overlapping_note();
+	if note:
+		note.queue_free();
+	else:
+		print("no note here");
+
+func get_overlapping_note():
+	var overlapping_areas = get_overlapping_areas();
+	for area in overlapping_areas:
+		if area is ChartNote:
+			return area;
+	return false;
