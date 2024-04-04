@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlbq5jacm2d5u"]
+
+[ext_resource type="Script" path="res://Scripts/chart_editor.gd" id="1_7v430"]
+[ext_resource type="PackedScene" uid="uid://dcvcqm1svncfd" path="res://Scenes/Prefabs/cursor.tscn" id="1_43svf"]
+[ext_resource type="PackedScene" uid="uid://dvtnux5cehs7f" path="res://Scenes/Prefabs/note.tscn" id="2_8hw46"]
+[ext_resource type="AudioStream" uid="uid://df4creajdtckd" path="res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3" id="2_50w02"]
+[ext_resource type="Texture2D" uid="uid://qfohyfwc1srh" path="res://Graphics Assets/songprogressline.png" id="4_31gs5"]
+[ext_resource type="Texture2D" uid="uid://dhqfsddrjjs1m" path="res://Graphics Assets/StartTrigger.png" id="4_ptkg2"]
+[ext_resource type="Script" path="res://Scripts/grid.gd" id="4_tmhq4"]
+
+[sub_resource type="GDScript" id="GDScript_p33wa"]
+script/source = "extends CharacterBody2D
+
+
+func _physics_process(delta):
+	move_and_slide();
+"
+
+[node name="ChartEditor" type="Node2D" node_paths=PackedStringArray("note_parent", "camera", "song_player", "song_progress_line", "grid")]
+script = ExtResource("1_7v430")
+song = ExtResource("2_50w02")
+bpm = 94.0
+note_prefab = ExtResource("2_8hw46")
+note_parent = NodePath("Notes")
+camera = NodePath("Camera2D")
+song_player = NodePath("SongPlayer")
+song_progress_line = NodePath("SongProgressLine")
+grid = NodePath("Grid")
+
+[node name="SongProgressLine" type="CharacterBody2D" parent="."]
+script = SubResource("GDScript_p33wa")
+
+[node name="Sprite2D" type="Sprite2D" parent="SongProgressLine"]
+position = Vector2(480, 0)
+texture = ExtResource("4_31gs5")
+
+[node name="SongPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Notes" type="Node2D" parent="."]
+
+[node name="Cursor" parent="." node_paths=PackedStringArray("chart_editor") instance=ExtResource("1_43svf")]
+chart_editor = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, -316)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, -20)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_ptkg2")
+
+[node name="Grid" type="Node2D" parent="."]
+position = Vector2(0, -640)
+script = ExtResource("4_tmhq4")
+
+[connection signal="song_progress_moved" from="Cursor" to="." method="set_song_progress"]

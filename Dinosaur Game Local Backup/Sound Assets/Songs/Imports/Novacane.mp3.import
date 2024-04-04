@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://df4creajdtckd"
+path="res://.godot/imported/Novacane.mp3-ded4022822ad1c7a41f55a2f7d908f6c.mp3str"
+
+[deps]
+
+source_file="res://Sound Assets/Songs/Novacane.mp3"
+dest_files=["res://.godot/imported/Novacane.mp3-ded4022822ad1c7a41f55a2f7d908f6c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
