@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhqume7wjmm2m"]
+
+[ext_resource type="Script" path="res://Scripts/note_hold_bar.gd" id="1_rfw2e"]
+[ext_resource type="Texture2D" uid="uid://byihruq0gcgav" path="res://Graphics Assets/note_hold_bar.png" id="2_wp75j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rehgw"]
+size = Vector2(40, 40)
+
+[node name="NoteHoldBar" type="Area2D" node_paths=PackedStringArray("nine_patch", "collision_shape")]
+rotation = 3.14159
+script = ExtResource("1_rfw2e")
+nine_patch = NodePath("NinePatchRect")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = 40.0
+offset_right = -60.0
+offset_bottom = 60.0
+grow_vertical = 2
+texture = ExtResource("2_wp75j")
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-80, 20)
+shape = SubResource("RectangleShape2D_rehgw")
