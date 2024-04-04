@@ -1,0 +1,156 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc608y7v72e6u"]
+
+[ext_resource type="Script" path="res://Scripts/chart_select_menu.gd" id="1_7hymb"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/chartbutton.tscn" id="2_0n2hu"]
+[ext_resource type="Script" path="res://Scripts/chart_creator.gd" id="3_nhrd1"]
+[ext_resource type="Script" path="res://Scripts/add_songs_button.gd" id="4_ayqiu"]
+
+[node name="ChartSelectMenu" type="Control" node_paths=PackedStringArray("new_chart_button", "create_chart_window", "button_parent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7hymb")
+new_chart_button = NodePath("Buttons/NewChartBtn")
+create_chart_window = NodePath("CreateChartWindow")
+chart_button_scene = ExtResource("2_0n2hu")
+button_parent = NodePath("Buttons")
+
+[node name="ChartCreator" type="Node" parent="." node_paths=PackedStringArray("song_field", "bpm_field", "name_field")]
+script = ExtResource("3_nhrd1")
+song_field = NodePath("../CreateChartWindow/Panel/SongField")
+bpm_field = NodePath("../CreateChartWindow/Panel/BPMField")
+name_field = NodePath("../CreateChartWindow/Panel/NameField")
+
+[node name="Buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NewChartBtn" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 104.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Create Chart
+"
+
+[node name="AddSongsBtn" type="Button" parent="Buttons" node_paths=PackedStringArray("directory_input")]
+visible = false
+layout_mode = 0
+offset_left = 403.0
+offset_top = 18.0
+offset_right = 614.0
+offset_bottom = 49.0
+text = "Add Songs from Directory:"
+script = ExtResource("4_ayqiu")
+directory_input = NodePath("../DirInput")
+
+[node name="DirInput" type="LineEdit" parent="Buttons"]
+visible = false
+layout_mode = 0
+offset_left = 621.0
+offset_top = 18.0
+offset_right = 1137.0
+offset_bottom = 49.0
+text = "C:\\Users\\Admin\\OneDrive\\Desktop\\test directory"
+placeholder_text = "Enter Directory Here"
+
+[node name="CreateChartWindow" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 198.0
+offset_top = 187.0
+offset_right = 776.0
+offset_bottom = 558.0
+
+[node name="Panel" type="Panel" parent="CreateChartWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = -18.0
+offset_right = 69.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BPMField" type="SpinBox" parent="CreateChartWindow/Panel"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 22.0
+offset_right = 155.063
+offset_bottom = 53.0
+
+[node name="Label" type="Label" parent="CreateChartWindow/Panel/BPMField"]
+layout_mode = 0
+offset_left = -47.0
+offset_right = -7.0
+offset_bottom = 23.0
+text = "BPM:"
+
+[node name="NameField" type="LineEdit" parent="CreateChartWindow/Panel"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 80.0
+offset_right = 217.0
+offset_bottom = 111.0
+
+[node name="Label" type="Label" parent="CreateChartWindow/Panel/NameField"]
+layout_mode = 0
+offset_left = -65.0
+offset_right = -10.0
+offset_bottom = 23.0
+text = "Name: "
+
+[node name="SongField" type="OptionButton" parent="CreateChartWindow/Panel"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 127.0
+offset_right = 136.0
+offset_bottom = 147.0
+item_count = 1
+popup/item_0/text = ""
+popup/item_0/id = 0
+
+[node name="Label" type="Label" parent="CreateChartWindow/Panel/SongField"]
+layout_mode = 0
+offset_left = -66.0
+offset_top = -5.0
+offset_right = -23.0
+offset_bottom = 18.0
+text = "Song:"
+
+[node name="CreateBtn" type="Button" parent="CreateChartWindow/Panel"]
+layout_mode = 1
+offset_left = 27.0
+offset_top = 319.0
+offset_right = 87.0
+offset_bottom = 350.0
+text = "Create"
+
+[node name="CancelBtn" type="Button" parent="CreateChartWindow/Panel"]
+layout_mode = 1
+offset_left = 494.0
+offset_top = 321.0
+offset_right = 554.0
+offset_bottom = 352.0
+text = "Cancel
+"
+
+[connection signal="pressed" from="Buttons/NewChartBtn" to="." method="_on_new_chart_btn_pressed"]
+[connection signal="pressed" from="Buttons/AddSongsBtn" to="Buttons/AddSongsBtn" method="open_songs_dir"]
+[connection signal="user_songs_added" from="Buttons/AddSongsBtn" to="ChartCreator" method="get_user_audio_streams_in_dir"]
+[connection signal="pressed" from="CreateChartWindow/Panel/CreateBtn" to="ChartCreator" method="initialize_chart"]
+[connection signal="pressed" from="CreateChartWindow/Panel/CancelBtn" to="." method="_on_cancel_btn_pressed"]

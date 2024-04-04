@@ -1,52 +1,58 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1712043363
-::res://Graphics Assets/::1712078898
-chartcursor.png::CompressedTexture2D::1794632212717637455::1711866440::1711857024::1::::<><>::
-credits.png::CompressedTexture2D::3074820426209111367::1712020618::1712017130::1::::<><>::
-cursor.png::CompressedTexture2D::816129764967719534::1711866440::1711857024::1::::<><>::
-dinosaurgamelogo.png::CompressedTexture2D::278284192803922921::1712020618::1712010413::1::::<><>::
-Note1.png::CompressedTexture2D::7870657975472530360::1711866440::1711677298::1::::<><>::
-Note1Hit.png::CompressedTexture2D::6545841671947759915::1711866440::1711857024::1::::<><>::
-NoteCatcher.png::CompressedTexture2D::1656641922839914288::1711677298::1711677298::1::::<><>::
-OGDino.png::CompressedTexture2D::7063195247975928698::1712078898::1712078899::1::::<><>::
-pixilart-drawing (2).png::CompressedTexture2D::6173469704901977982::1712020618::1712017617::1::::<><>::
-playbutton.png::CompressedTexture2D::5694614898772392477::1712020618::1712013493::1::::<><>::
-settings.png::CompressedTexture2D::7267769503648833137::1712020618::1712017130::1::::<><>::
-songprogressline.png::CompressedTexture2D::2909377546637849503::1711866440::1711857024::1::::<><>::
-StartTrigger.png::CompressedTexture2D::6918171397249358014::1711866440::1711857024::1::::<><>::
-useexitphoto.png::CompressedTexture2D::4866726699655876170::1712043364::1712039784::1::::<><>::
-::res://Scenes/::1712043364
-dropdowntest.tscn::PackedScene::2384407630931223377::1712040083::0::1::::<><>::res://Scripts/popupmenu.gd
-::res://Scenes/Charts/::1712043363
-testchart.tscn::PackedScene::425365879013591479::1712021336::0::1::::<><>::uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>res://Scripts/chart.gd<>res://Scripts/track.gd<>uid://df4creajdtckd::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://comphhlhmgagi::::res://Scenes/Prefabs/start_trigger.tscn
-::res://Scenes/Prefabs/::1712040083
-cursor.tscn::PackedScene::7343142349170165165::1712020618::0::1::::<><>::res://Scripts/cursor.gd<>uid://0tllh44eoeqp::::res://Graphics Assets/chartcursor.png
-note.tscn::PackedScene::8673277236066879941::1712040083::0::1::::<><>::res://Scripts/note.gd<>uid://c0i4b5ye2m3ql::::res://Graphics Assets/Note1Hit.png
+::res://::1712265483
+::res://Charts/::1712265483
+::res://Graphics Assets/::1712265483
+chartcursor.png::CompressedTexture2D::1470185238837855001::1712265483::1712265502::1::::<><>::
+credits.png::CompressedTexture2D::8774758696395769488::1712265483::1712265502::1::::<><>::
+cursor.png::CompressedTexture2D::1558285649016610696::1712265483::1712265502::1::::<><>::
+dinosaurgamelogo.png::CompressedTexture2D::1161920513068980850::1712265483::1712265502::1::::<><>::
+Note1.png::CompressedTexture2D::-1::1712265483::1712265483::1::::<><>::
+Note1Hit.png::CompressedTexture2D::6545841671947759915::1712265483::1712265502::1::::<><>::
+NoteCatcher.png::CompressedTexture2D::1656641922839914288::1712265483::1712265483::1::::<><>::
+OGDino.png::CompressedTexture2D::7063195247975928698::1712265483::1712265502::1::::<><>::
+pixilart-drawing (2).png::CompressedTexture2D::3281827091234024495::1712265483::1712265502::1::::<><>::
+playbutton.png::CompressedTexture2D::3915011308237819741::1712265483::1712265503::1::::<><>::
+settings.png::CompressedTexture2D::1051758324593670702::1712265483::1712265503::1::::<><>::
+songprogressline.png::CompressedTexture2D::1113556835313288558::1712265483::1712265503::1::::<><>::
+StartTrigger.png::CompressedTexture2D::3164931994253928802::1712265483::1712265503::1::::<><>::
+useexitphoto.png::CompressedTexture2D::4866726699655876170::1712265483::1712265502::1::::<><>::
+::res://Scenes/::1712265483
+dropdowntest.tscn::PackedScene::1072970116819448542::1712265344::0::1::::<><>::res://Scripts/popupmenu.gd
+::res://Scenes/Charts/::1712265483
+testchart.tscn::PackedScene::425365879013591479::1712265483::0::1::::<><>::uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>res://Scripts/chart.gd<>res://Scripts/track.gd<>uid://df4creajdtckd::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://comphhlhmgagi::::res://Scenes/Prefabs/start_trigger.tscn
+::res://Scenes/Prefabs/::1712265483
+cursor.tscn::PackedScene::7343142349170165165::1712181381::0::1::::<><>::res://Scripts/cursor.gd<>uid://5ld5i2psbarc::::res://Graphics Assets/chartcursor.png
+note.tscn::PackedScene::8673277236066879941::1712210710::0::1::::<><>::res://Scripts/note.gd<>uid://c0i4b5ye2m3ql::::res://Graphics Assets/Note1Hit.png
 notecatcher.tscn::PackedScene::2228269185595824407::1711866440::0::1::::<><>::res://Scripts/NoteCatcher.gd<>uid://xuqwd5sbll0k::::res://Graphics Assets/NoteCatcher.png
-start_trigger.tscn::PackedScene::5781181351806823652::1712020618::0::1::::<><>::res://Scripts/start_trigger.gd<>uid://c5thjiu12gkla::::res://Graphics Assets/StartTrigger.png
-::res://Scenes/Screens/::1712078404
-back button.gd::GDScript::-1::1712020618::0::1::::<>Button<>::
-Button.gd::GDScript::-1::1712020618::0::1::::<>Button<>::
-chart_editor.tscn::PackedScene::7934429227371253364::1712040083::0::1::::<><>::res://Scripts/chart_editor.gd<>uid://dcvcqm1svncfd::::res://Scenes/Prefabs/cursor.tscn<>uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>uid://ch2yfeko556a8::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://bhpla10ao7lvj::::res://Graphics Assets/songprogressline.png<>res://Scripts/chart_test.gd<>uid://c5thjiu12gkla::::res://Graphics Assets/StartTrigger.png<>res://Scripts/grid.gd
-ColorRect.gd::GDScript::-1::1712020618::0::1::::<>ColorRect<>::
-game.tscn::PackedScene::2797175863716719602::1711866441::0::1::::<><>::res://Scripts/game.gd<>uid://gcbyjimmyci6::::res://Scenes/Charts/testchart.tscn<>uid://60njdy26rjet::::res://Scenes/Prefabs/notecatcher.tscn<>res://Scripts/trigger_reciever.gd
-level_selector.gd::GDScript::-1::1712020618::0::1::::<>Node2D<>::
-level_selector.tscn::PackedScene::8366600300472246527::1712040083::0::1::::<><>::res://Scenes/Screens/level_selector.gd<>res://Scenes/Screens/back button.gd
-main_menu.gd::GDScript::-1::1712043364::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::7343451698108655161::1712078403::0::1::::<><>::res://Scenes/Screens/main_menu.gd<>uid://d72kg2dwqm3b::::res://Graphics Assets/dinosaurgamelogo.png<>uid://cnerqfsxu1yvd::::res://Graphics Assets/playbutton.png<>res://Scenes/Screens/TextureButton.gd<>uid://ct7qe5tdlorsw::::res://Graphics Assets/pixilart-drawing (2).png<>uid://bj2p3wyprak6r::::res://Graphics Assets/credits.png<>uid://cblqjpa7csjla::::res://Graphics Assets/useexitphoto.png<>res://Scripts/main menu quit button.gd
-TextureButton.gd::GDScript::-1::1712020618::0::1::::<>TextureButton<>::
-::res://Scripts/::1712043364
-chart.gd::GDScript::-1::1711866441::0::1::::SongChart<>Node2D<>::
-chart_editor.gd::GDScript::-1::1712043363::0::1::::ChartEditor<>Node2D<>::
-cursor.gd::GDScript::-1::1712043363::0::1::::Cursor<>Area2D<>::
-game.gd::GDScript::-1::1711866441::0::1::::Game<>Node2D<>::
-grid.gd::GDScript::-1::1711866441::0::1::::Grid<>Node2D<>::
-note.gd::GDScript::-1::1712043363::0::1::::ChartNote<>Area2D<>::
-NoteCatcher.gd::GDScript::-1::1711866441::0::1::::NoteCatcher<>Area2D<>::
-main menu quit button.gd::GDScript::-1::1712043364::0::1::::<>TextureButton<>::
-start_trigger.gd::GDScript::-1::1711866441::0::1::::StartTrigger<>Area2D<>::
-track.gd::GDScript::-1::1711866441::0::1::::<>CharacterBody2D<>::
-trigger_reciever.gd::GDScript::-1::1711866441::0::1::::<>Area2D<>::
+start_trigger.tscn::PackedScene::5781181351806823652::1712181381::0::1::::<><>::res://Scripts/start_trigger.gd<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png
+::res://Scenes/Screens/::1712265483
+back button.gd::GDScript::-1::1712265483::0::1::::<>Button<>::
+Button.gd::GDScript::-1::1712265483::0::1::::<>Button<>::
+chart_editor.tscn::PackedScene::7934429227371253364::1712181381::0::1::::<><>::res://Scripts/chart_editor.gd<>uid://dcvcqm1svncfd::::res://Scenes/Prefabs/cursor.tscn<>uid://dvtnux5cehs7f::::res://Scenes/Prefabs/note.tscn<>uid://qfohyfwc1srh::::res://Graphics Assets/songprogressline.png<>res://Scripts/chart_save_manager.gd<>uid://dhqfsddrjjs1m::::res://Graphics Assets/StartTrigger.png<>uid://ch2yfeko556a8::::res://Sound Assets/Songs/03) Frank Ocean - Novacane.mp3<>uid://bhpla10ao7lvj::::res://Graphics Assets/songprogressline.png<>res://Scripts/chart_test.gd<>uid://c5thjiu12gkla::::res://Graphics Assets/StartTrigger.png<>res://Scripts/grid.gd<>res://Scripts/editor_ui_button.gd
+ColorRect.gd::GDScript::-1::1712265483::0::1::::<>ColorRect<>::
+game.tscn::PackedScene::2797175863716719602::1712210710::0::1::::<><>::res://Scripts/game.gd<>uid://60njdy26rjet::::res://Scenes/Prefabs/notecatcher.tscn<>res://Scripts/trigger_reciever.gd
+level_selector.gd::GDScript::-1::1712265483::0::1::::<>Node2D<>::
+level_selector.tscn::PackedScene::8366600300472246527::1712265344::0::1::::<><>::res://Scripts/level_selector.gd
+main_menu.gd::GDScript::-1::1712265483::0::1::::<>Control<>::
+main_menu.tscn::PackedScene::7343451698108655161::1712265250::0::1::::<><>::res://Scripts/main_menu.gd<>uid://d72kg2dwqm3b::::res://Graphics Assets/dinosaurgamelogo.png<>uid://cnerqfsxu1yvd::::res://Graphics Assets/playbutton.png<>uid://ct7qe5tdlorsw::::res://Graphics Assets/pixilart-drawing (2).png<>uid://bj2p3wyprak6r::::res://Graphics Assets/credits.png<>uid://cblqjpa7csjla::::res://Graphics Assets/useexitphoto.png<>res://Scripts/main menu quit button.gd<>uid://ddo242msclq21::::res://Scenes/Screens/dinosaurs/OGDinosaur.tscn
+OGdino.tscn::PackedScene::-1::1712265483::0::1::::<><>::
+TextureButton.gd::GDScript::-1::1712265483::0::1::::<>TextureButton<>::
+::res://Scenes/Screens/dinosaurs/::1712265483
+OGDinosaur.tscn::PackedScene::7400422454867242664::1712265483::0::1::::<><>::uid://c7vp18vcbtibq::::res://Graphics Assets/OGDino.png
+::res://Scripts/::1712265483
+chart.gd::GDScript::-1::1712265483::0::1::::SongChart<>Node2D<>::
+chart_editor.gd::GDScript::-1::1712265483::0::1::::ChartEditor<>SceneRoot<>::
+chart_test.gd::GDScript::-1::1712265483::0::1::::SaveManager<>Node2D<>::
+cursor.gd::GDScript::-1::1712265483::0::1::::Cursor<>Area2D<>::
+game.gd::GDScript::-1::1712265483::0::1::::Game<>Node2D<>::
+grid.gd::GDScript::-1::1712265483::0::1::::Grid<>Node2D<>::
+main menu quit button.gd::GDScript::-1::1712265483::0::1::::<>TextureButton<>::
+note.gd::GDScript::-1::1712265483::0::1::::ChartNote<>Area2D<>::
+NoteCatcher.gd::GDScript::-1::1712265483::0::1::::NoteCatcher<>Area2D<>::
+popupmenu.gd::GDScript::-1::1712265483::0::1::::<>Control<>::
+start_trigger.gd::GDScript::-1::1712265483::0::1::::StartTrigger<>Area2D<>::
+track.gd::GDScript::-1::1712265483::0::1::::<>CharacterBody2D<>::
+trigger_reciever.gd::GDScript::-1::1712265483::0::1::::<>Area2D<>::
 ::res://Sound Assets/::1711694862
-::res://Sound Assets/Songs/::1711695089
-03) Frank Ocean - Novacane.mp3::AudioStreamMP3::5321367835226808109::1711694862::1711695089::1::::<><>::
+::res://Sound Assets/Songs/::1712265483
+03) Frank Ocean - Novacane.mp3::AudioStreamMP3::5321367835226808109::1712265483::1712265502::1::::<><>::
