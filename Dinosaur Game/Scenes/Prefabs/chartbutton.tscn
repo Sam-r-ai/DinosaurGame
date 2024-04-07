@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbakb505pt4ew"]
 
-[ext_resource type="Script" path="res://Scripts/chartbutton.gd" id="1_4qudk"]
+[ext_resource type="Script" path="res://Scripts/Chart Select/chartbutton.gd" id="1_4qudk"]
 
 [node name="ChartButton" type="Button"]
 offset_right = 93.0

@@ -1,7 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://e50uemylwnb6"]
 
-[ext_resource type="Script" path="res://Scripts/scene_manager.gd" id="1_csxfy"]
+[ext_resource type="Script" path="res://Scripts/Scenes/scene_manager.gd" id="1_csxfy"]
 [ext_resource type="PackedScene" uid="uid://cfx8wqn1s1nx" path="res://Scenes/Screens/main_menu.tscn" id="2_oiosa"]
+
+[sub_resource type="Animation" id="Animation_swtoi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6dqfb"]
 resource_name = "fade_in"
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_swtoi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_dyn73"]
@@ -58,6 +58,7 @@ _data = {
 }
 
 [node name="SceneManager" type="Node" node_paths=PackedStringArray("current_scene", "anim")]
+process_mode = 3
 script = ExtResource("1_csxfy")
 current_scene = NodePath("MainMenu")
 anim = NodePath("AnimationPlayer")
