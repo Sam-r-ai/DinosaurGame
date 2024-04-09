@@ -56,3 +56,5 @@ func place_trigger(trigger_scene : PackedScene):
 	chart_editor.trigger_parent.add_child(new_trigger);
 	
 	new_trigger.global_position = click_position;
+	new_trigger.timestamp = new_trigger.global_position.y/(grid.SPACE_SIZE.y*chart_editor.beats_per_second*chart_editor.grid_spaces_per_beat)*-1;
+	new_trigger.function = "toggle closeup"

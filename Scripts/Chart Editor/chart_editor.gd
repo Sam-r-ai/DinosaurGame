@@ -14,6 +14,7 @@ var bpm : float;
 @export var cursor : Cursor;
 @export var note_prefab : PackedScene;
 @export var note_hold_prefab : PackedScene;
+@export var trigger_prefab : PackedScene;
 @export var note_parent : Node2D;
 @export var trigger_parent : Node2D;
 @export var camera : Camera2D;
