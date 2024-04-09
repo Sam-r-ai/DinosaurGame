@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://sesxh23acqvm"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/trigger.gd" id="1_5klay"]
+[ext_resource type="Texture2D" uid="uid://ct14y3ikj6bse" path="res://Graphics Assets/Play Mode/ToggleCloseUpTrigger.png" id="2_w5in2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc8d7"]
+size = Vector2(40, 40)
+
+[node name="CloseUpTrigger" type="Area2D"]
+script = ExtResource("1_5klay")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, -20)
+shape = SubResource("RectangleShape2D_mc8d7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, -20)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_w5in2")
