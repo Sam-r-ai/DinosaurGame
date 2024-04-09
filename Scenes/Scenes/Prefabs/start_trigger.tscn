@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://comphhlhmgagi"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/trigger.gd" id="1_p1nnm"]
+[ext_resource type="Texture2D" uid="uid://dhqfsddrjjs1m" path="res://Graphics Assets/Play Mode/StartTrigger.png" id="1_r4hqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3t35"]
+size = Vector2(40, 40)
+
+[node name="StartTrigger" type="Area2D"]
+script = ExtResource("1_p1nnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l3t35")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_r4hqn")
+metadata/_edit_lock_ = true

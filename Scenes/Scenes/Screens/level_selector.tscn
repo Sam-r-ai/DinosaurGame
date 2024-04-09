@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://drg3xjmp1rknv"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/level_selector.gd" id="1_8u1us"]
+
+[node name="level_selector" type="Node2D"]
+script = ExtResource("1_8u1us")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 646.0
+
+[node name="back button" type="Button" parent="."]
+offset_left = 23.0
+offset_top = 580.0
+offset_right = 139.0
+offset_bottom = 628.0
+text = "Back"
+
+[connection signal="pressed" from="back button" to="." method="_on_back_button_pressed"]
