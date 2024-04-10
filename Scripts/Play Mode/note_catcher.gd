@@ -20,45 +20,51 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Note " + str(lane)):
 		var lowest_note = get_lowest_note();
 		if lowest_note:
-			var inaccuracy = abs((global_position.y) - lowest_note.global_position.y);
-			var score_multiplier = 1 - (inaccuracy/catcher_size);
-			
-			print(score_multiplier);
-			
 			hit_note(lowest_note);
-			play_mode.score += 100*score_multiplier;
-			play_mode.update_score_display();
-			
-			dino.anim.play("note_hit");
-			dino_close_up.frame = 0;
-			dino_close_up.play("note_hit");
 	
 	#Hit Held Notes
 	if Input.is_action_pressed("Note " + str(lane)):
 		var held_note = get_held_note();
 		
 		if held_note:
-			
 			held_note.on_hit(global_position, delta*pixels_per_second);
-			play_mode.score += round(100 * delta);
+			play_mode.score += round(50 * delta);
 			play_mode.update_score_display();
 			if !hit_particle_emitter.emitting:
 				hit_particle_emitter.emitting = true;
 	
 	if bot_play_active:
 		var note = get_lowest_note();
-		if note:
+		if note and note.global_position.y >= global_position.y-20:
 			hit_note(note);
-			dino.anim.play("note_hit");
-			dino_close_up.frame = lane;
-			dino_close_up.anim.play("note_hit");
+		
+		var held_note = get_held_note();
+		if held_note:
+			held_note.on_hit(global_position, delta*pixels_per_second);
+			play_mode.score += round(50 * delta);
+			play_mode.update_score_display();
+			if !hit_particle_emitter.emitting:
+				hit_particle_emitter.emitting = true;
 
-func hit_note(note):
+func hit_note(note : ChartNote):
+	var inaccuracy = abs((global_position.y) - note.global_position.y);
+	var score_multiplier = 1 - (inaccuracy/catcher_size);
+	
 	note.on_hit();
 	anim_player.play("hit");
 	var new_hit_particle = hit_particle_scene.instantiate();
 	add_child(new_hit_particle);
 	new_hit_particle.emitting = true;
+	
+	play_mode.score += 50*score_multiplier;
+	play_mode.update_score_display();
+	
+	dino.anim.play("note_hit");
+	dino.anim.seek(0);
+	dino_close_up.frame = lane;
+	if dino_close_up.fly_anim_finished:
+		dino_close_up.anim.play("note_hit");
+		dino_close_up.anim.seek(0);
 
 func hit_held_note(held_note):
 	held_note.on_hit();

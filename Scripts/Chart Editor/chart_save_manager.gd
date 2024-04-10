@@ -89,6 +89,9 @@ func load_chart():
 	chart_editor.bpm = save_dictionary["bpm"];
 	chart_editor.song = load(save_dictionary["song path"]);
 	note_dictionary = save_dictionary["notes"];
+	if save_dictionary.has("triggers"):
+		print("found triggers in save dictionary")
+		trigger_dictionary = save_dictionary["triggers"];
 	
 	var beats_per_second = chart_editor.bpm/60;
 	var pixels_per_second = (grid.SPACE_SIZE.y*beats_per_second*chart_editor.grid_spaces_per_beat)*-1;
@@ -112,8 +115,6 @@ func load_chart():
 		new_note.global_position.x = new_note.lane * grid.SPACE_SIZE.x;
 		new_note.global_position.y = new_note.timestamp * pixels_per_second;
 		
-		
-		
 		if note_data.size() >= 3:
 			new_note.hold_time = note_data[2];
 			
@@ -129,6 +130,22 @@ func load_chart():
 		
 		new_note.lane = note_data[0];
 		new_note.timestamp = note_data[1];
+
+	
+	
+	for entry in trigger_dictionary:
+		var new_trigger : Trigger = chart_editor.trigger_prefab.instantiate();
+		
+		var trigger_data = trigger_dictionary[entry];
+		new_trigger.function = trigger_data[0];
+		new_trigger.timestamp = trigger_data[1];
+		print(new_trigger.timestamp);
+		print(pixels_per_second);
+		
+		new_trigger.global_position.x = 0;
+		new_trigger.global_position.y = new_trigger.timestamp * pixels_per_second;
+		
+		trigger_parent.add_child(new_trigger);
 	
 	chart_name_label.text = chart_name;
 	print("Chart: " + str(chart_name) + " Loaded");
@@ -136,6 +153,8 @@ func load_chart():
 func clear_chart():
 	for note in note_parent.get_children():
 		note.queue_free();
+	for trigger in trigger_parent.get_children():
+		trigger.queue_free();
 
 func on_name_text_submitted(new_text : String):
 	pass;

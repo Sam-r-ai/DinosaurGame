@@ -143,18 +143,19 @@ hit_particle_scene = ExtResource("8_av771")
 hit_particle_emitter = NodePath("HeldNoteHit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(80, -20)
+position = Vector2(80, -40)
 shape = SubResource("RectangleShape2D_4sx4g")
 
 [node name="HitSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -20)
 scale = Vector2(1, 1e-05)
 sprite_frames = SubResource("SpriteFrames_l7dmn")
+frame_progress = 0.143812
 centered = false
 offset = Vector2(0, -160)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(80, -20)
+position = Vector2(80, -40)
 sprite_frames = SubResource("SpriteFrames_ogran")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -163,6 +164,7 @@ libraries = {
 }
 
 [node name="HeldNoteHit" type="GPUParticles2D" parent="."]
+position = Vector2(0, -19)
 emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_3qh7q")
