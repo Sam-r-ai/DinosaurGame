@@ -22,7 +22,7 @@ var bpm : float;
 @export var song_progress_line : CharacterBody2D;
 @export var grid : Grid;
 @export var save_manager : SaveManager; 
-
+@export var spaces_per_beat_display : SpinBox;
 
 var seconds_per_beat : float;
 var beats_per_second : float;
@@ -55,6 +55,8 @@ func load_scene_parameters(new_scene_parameters):
 	pixels_per_second = (grid.SPACE_SIZE.y*beats_per_second*grid_spaces_per_beat)*-1;
 	print(song_progress_line_speed);
 	
+	spaces_per_beat_display.value = grid_spaces_per_beat
+	
 	song_player.stream = song;
 	song_player.play();
 	song_player.set_stream_paused(true);
@@ -76,6 +78,7 @@ func change_spaces_per_beat(change_multiplier : float):
 		song_progress_line.velocity.y = 0;
 		
 		grid_spaces_per_beat *= change_multiplier;
+		spaces_per_beat_display.value = grid_spaces_per_beat;
 		
 		pixels_per_second = (grid.SPACE_SIZE.y*beats_per_second*grid_spaces_per_beat)*-1
 		
@@ -90,6 +93,11 @@ func change_spaces_per_beat(change_multiplier : float):
 				held_note.global_position.y += note.hold_time * pixels_per_second;
 				held_note.end_point.global_position.y = note.global_position.y;
 				held_note.stretch_to_end_point();
+		
+		for trigger in trigger_parent.get_children():
+			var current_grid_position = grid.get_grid_position(trigger.global_position);
+			var new_position = (((current_grid_position.y)*change_multiplier)*grid.SPACE_SIZE.y);
+			trigger.global_position.y = (new_position);
 		
 		song_progress_line_speed = grid.SPACE_SIZE.y*beats_per_second*grid_spaces_per_beat
 		song_progress_line.global_position.y *= change_multiplier;
@@ -142,45 +150,7 @@ func distance_to_seconds(distance):
 func seconds_to_distance(seconds):
 	return abs(seconds*(grid.SPACE_SIZE.y*beats_per_second*grid_spaces_per_beat));
 
-
 func _on_time_sig_input_value_changed(new_spaces_per_beat):
-	if (new_spaces_per_beat >= 1):
-		var change_multiplier = new_spaces_per_beat/grid_spaces_per_beat;
-		
-		print("new spaces per beat: " + str(new_spaces_per_beat));
-		
-		song_player.set_stream_paused(true);
-		song_progress_line.velocity.y = 0;
-		
-		grid_spaces_per_beat = new_spaces_per_beat;
-		
-		pixels_per_second = (grid.SPACE_SIZE.y*beats_per_second*grid_spaces_per_beat)*-1
-		
-		for note in note_parent.get_children():
-			var current_grid_position = grid.get_grid_position(note.global_position);
-			var new_position = (((current_grid_position.y)*change_multiplier)*grid.SPACE_SIZE.y);
-			note.global_position.y = (new_position);
-			
-			if note.hold_time > 0:
-				var held_note = note.held_note;
-				held_note.global_position = note.global_position
-				held_note.global_position.y += note.hold_time * pixels_per_second;
-				held_note.end_point.global_position.y = note.global_position.y;
-				held_note.stretch_to_end_point();
-		
-		song_progress_line_speed = grid.SPACE_SIZE.y*beats_per_second*grid_spaces_per_beat
-		song_progress_line.global_position.y *= change_multiplier;
-		
-		var cursor_grid_position = grid.get_grid_position(cursor.global_position);
-		var new_cursor_grid_position = cursor_grid_position;
-		
-		new_cursor_grid_position.y *= change_multiplier;
-		
-		var camera_offset_y = (new_cursor_grid_position.y - cursor_grid_position.y)*grid.SPACE_SIZE.y;
-		
-		camera.global_position.y += camera_offset_y;
-		
-		pixels_per_second = (grid.SPACE_SIZE.y*beats_per_second*grid_spaces_per_beat)*-1;
-		
-	else:
-		print("spaces per beat cannot be less than 1");
+	var change_multiplier = new_spaces_per_beat/grid_spaces_per_beat;
+	change_spaces_per_beat(change_multiplier);
+	

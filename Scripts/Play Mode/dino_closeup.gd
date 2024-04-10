@@ -28,4 +28,5 @@ func toggle():
 		fly_in();
 
 func _on_animation_player_animation_finished(anim_name):
-	fly_anim_finished = true;
+	if anim_name == "fly in":
+		fly_anim_finished = true;
