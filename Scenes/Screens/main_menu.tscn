@@ -135,6 +135,22 @@ position = Vector2(955, 112)
 position = Vector2(578, 343.5)
 shape = SubResource("RectangleShape2D_8f3w6")
 
+[node name="green grass" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -26.0
+offset_top = 598.0
+offset_right = 1185.0
+offset_bottom = 728.0
+color = Color(0.498039, 0.698039, 0.219608, 1)
+
+[node name="dirt brown" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -22.0
+offset_top = 612.0
+offset_right = 1192.0
+offset_bottom = 742.0
+color = Color(0.545098, 0.270588, 0.0745098, 1)
+
 [connection signal="pressed" from="play button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PlayModeBtn" to="." method="_on_play_mode_btn_pressed"]
 [connection signal="pressed" from="exit button" to="." method="_on_exit_button_pressed"]
