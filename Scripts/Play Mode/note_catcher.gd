@@ -52,15 +52,17 @@ func hit_note(note : ChartNote):
 	
 	note.on_hit();
 	anim_player.play("hit");
-	var new_hit_particle = hit_particle_scene.instantiate();
-	add_child(new_hit_particle);
-	new_hit_particle.emitting = true;
+	
+	#var new_hit_particle = hit_particle_scene.instantiate();
+	#add_child(new_hit_particle);
+	#new_hit_particle.emitting = true;
 	
 	play_mode.score += 50*score_multiplier;
 	play_mode.update_score_display();
 	
 	dino.anim.play("note_hit");
 	dino.anim.seek(0);
+	dino.frame = lane;
 	dino_close_up.frame = lane;
 	if dino_close_up.fly_anim_finished:
 		dino_close_up.anim.play("note_hit");
