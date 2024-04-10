@@ -26,6 +26,7 @@ func load_scene_parameters(new_scene_parameters):
 
 func select_chart(path):
 	scene_parameters["chart path"] = path;
+	#	scene_parameters["destination scene"] = "play mode";
 	change_scene.emit(scene_name, destination_scene);
 
 func _on_new_chart_btn_pressed():

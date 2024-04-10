@@ -1,7 +1,6 @@
 extends Area2D
 
 @export var play_mode : PlayMode;
-@export var play_mode : PlayMode;
 @export var miss_display : Label;
 
 func _on_area_entered(area):
