@@ -17,3 +17,8 @@ func _on_play_mode_btn_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
+
+func _on_credits_button_pressed():
+	scene_parameters["destination scene"] = "credit scene";
+	change_scene.emit(scene_name, "credit scene");
