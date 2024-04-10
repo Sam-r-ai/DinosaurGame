@@ -1,5 +1,4 @@
 [gd_scene load_steps=45 format=3 uid="uid://2j0scq6o8os4"]
-[gd_scene load_steps=45 format=3 uid="uid://2j0scq6o8os4"]
 
 [ext_resource type="Script" path="res://Scripts/Play Mode/play_mode.gd" id="1_1miux"]
 [ext_resource type="PackedScene" uid="uid://dvtnux5cehs7f" path="res://Scenes/Prefabs/note.tscn" id="2_0o1h3"]
@@ -16,9 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bbrewk45glaf1" path="res://Graphics Assets/Characters/dino.png" id="10_nqakx"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/dino.gd" id="11_5ncnn"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/trigger_reciever.gd" id="12_lur83"]
-[ext_resource type="Script" path="res://Scripts/Play Mode/results_display.gd" id="15_puorc"]
+[ext_resource type="Script" path="res://Scripts/Play Mode/results_display.gd" id="15_lxht7"]
+[ext_resource type="PackedScene" uid="uid://datgq6olycrpr" path="res://Scenes/Prefabs/rank_display.tscn" id="16_5c02x"]
 [ext_resource type="Texture2D" uid="uid://du1a1fiji8b4t" path="res://Graphics Assets/Play Mode/ResultsDisplay.png" id="16_lx43k"]
-[ext_resource type="PackedScene" uid="uid://byw5q4o1poypo" path="res://Scenes/Prefabs/rank_display.tscn" id="18_21fug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umqgk"]
 size = Vector2(64, 20)
@@ -314,7 +313,6 @@ script/source = "extends ProgressBar
 "
 
 [node name="PlayMode" type="Node2D" node_paths=PackedStringArray("track", "song_player", "note_catcher", "trigger_reciever", "results_display", "start_label", "pause_menu", "score_display", "dino", "dino_close_up")]
-[node name="PlayMode" type="Node2D" node_paths=PackedStringArray("track", "song_player", "note_catcher", "trigger_reciever", "results_display", "start_label", "pause_menu", "score_display", "dino", "dino_close_up")]
 process_mode = 1
 script = ExtResource("1_1miux")
 pixels_per_second = 600
@@ -325,7 +323,6 @@ track = NodePath("Track")
 song_player = NodePath("SongPlayer")
 note_catcher = NodePath("NoteCatchers/NoteCatcher")
 trigger_reciever = NodePath("NoteCatchers/Trigger Reciever")
-results_display = NodePath("UI/ResultsDisplay")
 results_display = NodePath("UI/ResultsDisplay")
 start_label = NodePath("UI/GameInfo/StartLabel")
 pause_menu = NodePath("UI/PauseMenu")
@@ -372,10 +369,8 @@ shape = SubResource("RectangleShape2D_umqgk")
 metadata/_edit_lock_ = true
 
 [node name="MissZone" type="Area2D" parent="NoteCatchers" node_paths=PackedStringArray("play_mode", "miss_display")]
-[node name="MissZone" type="Area2D" parent="NoteCatchers" node_paths=PackedStringArray("play_mode", "miss_display")]
 position = Vector2(-160, 360)
 script = ExtResource("4_k415y")
-play_mode = NodePath("../..")
 play_mode = NodePath("../..")
 miss_display = NodePath("../../UI/GameInfo/MissDIsplay")
 
@@ -472,7 +467,6 @@ label_settings = SubResource("LabelSettings_ofn70")
 horizontal_alignment = 1
 
 [node name="ResultsDisplay" type="Control" parent="UI" node_paths=PackedStringArray("play_mode", "score_display", "miss_display", "accuracy_display", "rank_display")]
-[node name="ResultsDisplay" type="Control" parent="UI" node_paths=PackedStringArray("play_mode", "score_display", "miss_display", "accuracy_display", "rank_display")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -486,7 +480,7 @@ offset_right = 320.0
 offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("15_puorc")
+script = ExtResource("15_lxht7")
 play_mode = NodePath("../..")
 score_display = NodePath("VBoxContainer/Score")
 miss_display = NodePath("VBoxContainer/Misses")
@@ -501,14 +495,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RankDisplay" parent="UI/ResultsDisplay" instance=ExtResource("18_21fug")]
-position = Vector2(446.5, 210.5)
+[node name="RankDisplay" parent="UI/ResultsDisplay" instance=ExtResource("16_5c02x")]
+position = Vector2(442.5, 214.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/ResultsDisplay"]
 texture = ExtResource("16_lx43k")
 centered = false
 
-[node name="PlayAgainBtn" type="Button" parent="UI/ResultsDisplay"]
 [node name="PlayAgainBtn" type="Button" parent="UI/ResultsDisplay"]
 layout_mode = 2
 offset_left = 121.5
@@ -517,7 +510,6 @@ offset_right = 320.5
 offset_bottom = 356.5
 text = "Play Again"
 
-[node name="MenuBtn" type="Button" parent="UI/ResultsDisplay"]
 [node name="MenuBtn" type="Button" parent="UI/ResultsDisplay"]
 layout_mode = 2
 offset_left = 336.0
@@ -535,7 +527,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -189.0
 offset_top = -72.0
-offset_right = 7.0
+offset_right = 25.0
 offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
