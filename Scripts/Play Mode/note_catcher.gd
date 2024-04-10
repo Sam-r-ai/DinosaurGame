@@ -15,6 +15,9 @@ extends Area2D
 
 @onready var bot_play_active = play_mode.bot_play_active;
 
+func _ready():
+	randomize();
+
 func _physics_process(delta):
 	#Hit Notes
 	if Input.is_action_just_pressed("Note " + str(lane)):
@@ -62,7 +65,7 @@ func hit_note(note : ChartNote):
 	
 	dino.anim.play("note_hit");
 	dino.anim.seek(0);
-	dino.frame = lane;
+	dino.frame = randi_range(1,5);
 	dino_close_up.frame = lane;
 	if dino_close_up.fly_anim_finished:
 		dino_close_up.anim.play("note_hit");
