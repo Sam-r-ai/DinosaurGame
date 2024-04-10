@@ -22,3 +22,8 @@ func _on_exit_button_pressed():
 func _on_credits_button_pressed():
 	scene_parameters["destination scene"] = "credit scene";
 	change_scene.emit(scene_name, "credit scene");
+
+
+func _on_settings_button_pressed():
+	scene_parameters["destination scene"] = "setting scene";
+	change_scene.emit(scene_name, "setting scene");

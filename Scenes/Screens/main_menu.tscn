@@ -153,5 +153,6 @@ color = Color(0.545098, 0.270588, 0.0745098, 1)
 
 [connection signal="pressed" from="play button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PlayModeBtn" to="." method="_on_play_mode_btn_pressed"]
+[connection signal="pressed" from="settings button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="credits button" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="exit button" to="." method="_on_exit_button_pressed"]

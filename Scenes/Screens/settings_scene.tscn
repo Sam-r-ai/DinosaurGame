@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b32mhccdfexi7"]
+
+[ext_resource type="Script" path="res://Scripts/settings_scene.gd" id="1_sh663"]
+[ext_resource type="Texture2D" uid="uid://bhmhc47c3unkn" path="res://Graphics Assets/Main Menu/backbutton.png" id="2_5xhh1"]
+
+[node name="SettingsScene" type="Node2D"]
+script = ExtResource("1_sh663")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1154.0
+offset_bottom = 650.0
+color = Color(0.968627, 0.937255, 0.921569, 1)
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 987.0
+offset_top = 571.0
+offset_right = 1017.0
+offset_bottom = 583.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("2_5xhh1")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
