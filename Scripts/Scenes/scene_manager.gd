@@ -13,6 +13,8 @@ var scene_dictionary = {
 	"chart select" : "chart_select",
 	"chart editor" : "chart_editor",
 	"play mode" : "play_mode",
+	"credit scene" : "credit_scene",
+	"setting scene" : "settings_scene",
 }
 
 func _ready():
