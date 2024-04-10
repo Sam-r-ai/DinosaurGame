@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2f651"]
-size = Vector2(4.53558, 44)
+size = Vector2(4.61378, 44)
 
 [node name="OGDino" type="CharacterBody2D"]
 script = ExtResource("1_qbmoc")
@@ -30,7 +30,7 @@ scale = Vector2(2, 2.126)
 sprite_frames = SubResource("SpriteFrames_ihhty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(35, 33)
+position = Vector2(35.5, 33)
 rotation = -3.14159
 scale = Vector2(12.7878, -1.77966)
 shape = SubResource("RectangleShape2D_2f651")
