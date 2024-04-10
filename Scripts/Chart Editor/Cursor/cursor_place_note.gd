@@ -18,6 +18,7 @@ func enter_state():
 	
 	if grid.get_grid_position(click_position).x < 1:
 		place_trigger(close_up_trigger_scene);
+		print("trigger placed");
 		change_state.emit(self, "normal");
 		return;
 	

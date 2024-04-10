@@ -12,7 +12,7 @@ var hold_time = 40;
 var missed : bool = false;
 
 func on_hit(catcher_position : Vector2, hit_amount : float):
-	catcher_position.y += 0;
+	catcher_position.y -= 20;
 	end_point.global_position.y = catcher_position.y;
 	
 	stretch_to_end_point();

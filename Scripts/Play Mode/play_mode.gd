@@ -6,6 +6,7 @@ var bpm : float;
 var song_path : String;
 var note_dictionary = {};
 var chart_path : String;
+var trigger_dictionary : Dictionary = {};
 
 var save_dictionary : Dictionary = {};
 
@@ -16,9 +17,11 @@ var song_started : bool = false;
 @export var pixels_per_second = 300;
 @export var note_scene : PackedScene;
 @export var held_note_scene : PackedScene;
+@export var trigger_scene : PackedScene;
 @export var track : CharacterBody2D;
 @export var song_player : AudioStreamPlayer;
 @export var note_catcher : Area2D;
+@export var trigger_reciever : TriggerReciever;
 
 @export var start_label : Label;
 @export var pause_menu : Control;
@@ -74,8 +77,11 @@ func load_chart():
 	bpm = save_dictionary["bpm"];
 	song_path = save_dictionary["song path"];
 	note_dictionary = save_dictionary["notes"];
+	if save_dictionary["triggers"]:
+		trigger_dictionary = save_dictionary["triggers"];
 	
 	load_notes();
+	load_triggers();
 
 func load_notes():
 	for note in note_dictionary:
@@ -101,6 +107,19 @@ func load_notes():
 			track.add_child(new_held_note);
 		
 		track.add_child(new_note);
+
+func load_triggers():
+	for trigger in trigger_dictionary:
+		var trigger_data = trigger_dictionary[trigger];
+		var new_trigger = trigger_scene.instantiate();
+		
+		new_trigger.function = trigger_data[0];
+		new_trigger.timestamp = trigger_data[1].to_float();
+		
+		new_trigger.global_position.y = new_trigger.timestamp*pixels_per_second*-1;
+		
+		track.add_child(new_trigger);
+		new_trigger.global_position.x = trigger_reciever.global_position.x;
 
 func fall_down():
 	if !song_started:

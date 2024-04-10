@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://2j0scq6o8os4"]
+[gd_scene load_steps=37 format=3 uid="uid://2j0scq6o8os4"]
 
 [ext_resource type="Script" path="res://Scripts/Play Mode/play_mode.gd" id="1_1miux"]
 [ext_resource type="PackedScene" uid="uid://dvtnux5cehs7f" path="res://Scenes/Prefabs/note.tscn" id="2_0o1h3"]
 [ext_resource type="PackedScene" uid="uid://dhqume7wjmm2m" path="res://Scenes/Prefabs/note_hold_bar.tscn" id="3_34biu"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/track.gd" id="3_kjujb"]
+[ext_resource type="PackedScene" uid="uid://sesxh23acqvm" path="res://Scenes/Prefabs/close_up_trigger.tscn" id="4_d8kku"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/miss_zone.gd" id="4_k415y"]
 [ext_resource type="PackedScene" uid="uid://bi4oavdpoagj2" path="res://Scenes/Prefabs/note_catcher.tscn" id="4_ksgej"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/pause_menu.gd" id="5_m4osi"]
@@ -13,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/Play Mode/dino_closeup.gd" id="8_3srva"]
 [ext_resource type="Texture2D" uid="uid://bbrewk45glaf1" path="res://Graphics Assets/Characters/dino.png" id="10_nqakx"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/dino.gd" id="11_5ncnn"]
+[ext_resource type="Script" path="res://Scripts/Play Mode/trigger_reciever.gd" id="12_lur83"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ohvk5"]
 atlas = ExtResource("10_nqakx")
@@ -272,6 +274,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6n21a"]
 size = Vector2(800, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umqgk"]
+size = Vector2(64, 20)
+
 [sub_resource type="LabelSettings" id="LabelSettings_ofn70"]
 font_size = 29
 
@@ -281,16 +286,18 @@ script/source = "extends ProgressBar
 @export var label : Label;
 "
 
-[node name="PlayMode" type="Node2D" node_paths=PackedStringArray("track", "song_player", "note_catcher", "start_label", "pause_menu", "score_display", "dino", "dino_close_up")]
+[node name="PlayMode" type="Node2D" node_paths=PackedStringArray("track", "song_player", "note_catcher", "trigger_reciever", "start_label", "pause_menu", "score_display", "dino", "dino_close_up")]
 process_mode = 1
 script = ExtResource("1_1miux")
 bot_play_active = true
 pixels_per_second = 600
 note_scene = ExtResource("2_0o1h3")
 held_note_scene = ExtResource("3_34biu")
+trigger_scene = ExtResource("4_d8kku")
 track = NodePath("Track")
 song_player = NodePath("SongPlayer")
 note_catcher = NodePath("NoteCatchers/NoteCatcher")
+trigger_reciever = NodePath("Trigger Reciever")
 start_label = NodePath("UI/StartLabel")
 pause_menu = NodePath("UI/PauseMenu")
 score_display = NodePath("UI/ScoreDisplay")
@@ -359,7 +366,7 @@ script = ExtResource("4_k415y")
 miss_display = NodePath("../../UI/MissDIsplay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoteCatchers/MissZone"]
-position = Vector2(560, 280)
+position = Vector2(560, 192)
 shape = SubResource("RectangleShape2D_6n21a")
 debug_color = Color(0.988235, 0, 0.32549, 0.419608)
 
@@ -381,6 +388,15 @@ lane = 4.0
 [node name="NoteCatcher5" parent="NoteCatchers" instance=ExtResource("4_ksgej")]
 position = Vector2(640, 480)
 lane = 5.0
+
+[node name="Trigger Reciever" type="Area2D" parent="." node_paths=PackedStringArray("play_mode")]
+position = Vector2(853, 570)
+script = ExtResource("12_lur83")
+play_mode = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger Reciever"]
+shape = SubResource("RectangleShape2D_umqgk")
+metadata/_edit_lock_ = true
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -514,7 +530,9 @@ horizontal_alignment = 1
 [node name="ResumeTimer" type="Timer" parent="UI/PauseMenu"]
 wait_time = 3.0
 
+[connection signal="animation_finished" from="CloseUp/AnimationPlayer" to="CloseUp" method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="NoteCatchers/MissZone" to="NoteCatchers/MissZone" method="_on_area_entered"]
+[connection signal="area_entered" from="Trigger Reciever" to="Trigger Reciever" method="_on_area_entered"]
 [connection signal="edit_button_pressed" from="UI/PauseMenu" to="." method="enter_edit_mode"]
 [connection signal="previous_scene_button_pressed" from="UI/PauseMenu" to="." method="_on_pause_menu_previous_scene_button_pressed"]
 [connection signal="quit_button_pressed" from="UI/PauseMenu" to="." method="_on_pause_menu_quit_button_pressed"]
