@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbmwj5d76wj16"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/og_dino.gd" id="1_qbmoc"]
+[ext_resource type="Texture2D" uid="uid://3dh0ce2lc04w" path="res://Graphics Assets/Main Menu/OGDino.png" id="2_kh6pa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51ksu"]
+atlas = ExtResource("2_kh6pa")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihhty"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51ksu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f651"]
+size = Vector2(4.53558, 44)
+
+[node name="OGDino" type="CharacterBody2D"]
+script = ExtResource("1_qbmoc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(35, 30)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ihhty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35, 33)
+rotation = -3.14159
+scale = Vector2(12.7878, -1.77966)
+shape = SubResource("RectangleShape2D_2f651")

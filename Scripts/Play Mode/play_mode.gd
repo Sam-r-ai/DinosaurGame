@@ -22,6 +22,7 @@ var song_started : bool = false;
 @export var song_player : AudioStreamPlayer;
 @export var note_catcher : Area2D;
 @export var trigger_reciever : TriggerReciever;
+@export var results_display : Control;
 
 @export var start_label : Label;
 @export var pause_menu : Control;
@@ -33,7 +34,10 @@ var song_started : bool = false;
 
 var song_start_timer : SceneTreeTimer;
 
+var max_score : int = 0;
 var score : int = 0;
+var misses : int = 0;
+var accuracy : float = 0;
 
 var close_up_active : bool = false;
 
@@ -55,6 +59,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Pause"):
 		pause_menu.visible = true;
 		get_tree().paused = true;
+	
+	if Input.is_action_just_pressed("Cheat"):
+		end_song_cheat();
 
 func update_score_display():
 	score_display.text = "Score: " + str(score);
@@ -107,6 +114,8 @@ func load_notes():
 			track.add_child(new_held_note);
 		
 		track.add_child(new_note);
+		max_score += 50;
+		max_score += 50*new_note.hold_time;
 
 func load_triggers():
 	for trigger in trigger_dictionary:
@@ -137,24 +146,44 @@ func on_song_timer_timeout():
 	song_player.play();
 
 func _on_pause_menu_quit_button_pressed():
+	results_display.visible = false;
+	pause_menu.visible = false;
 	change_scene.emit(scene_name, "main menu");
 	song_player.stream_paused = true;
 	track.velocity.y = 0;
 
 func _on_pause_menu_previous_scene_button_pressed():
+	pause_menu.visible = false;
 	scene_parameters["destination scene"] = scene_name;
 	change_scene.emit(scene_name, "chart select");
 	song_player.stream_paused = true;
 	track.velocity.y = 0;
 
 func enter_edit_mode():
+	pause_menu.visible = false;
 	scene_parameters["chart path"] = chart_path;
 	change_scene.emit(scene_name, "chart editor");
 	song_player.stream_paused = true;
 	track.velocity.y = 0;
 
 func restart_scene():
+	pause_menu.visible = false;
+	results_display.visible = false;
 	scene_parameters["chart path"] = chart_path;
 	change_scene.emit(scene_name, scene_name);
 	song_player.stream_paused = true;
 	track.velocity.y = 0;
+
+func _on_song_player_finished():
+	results_display.visible = true;
+	results_display.initialize();
+
+func save_rank():
+	pass;
+
+func end_song_cheat():
+	track.velocity.y = 0;
+	score = max_score;
+	misses = 0;
+	accuracy = 100;
+	song_player.seek(song_player.stream.get_length() - 1);

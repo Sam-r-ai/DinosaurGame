@@ -1,10 +1,25 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=6 format=3 uid="uid://cfx8wqn1s1nx"]
+=======
+[gd_scene load_steps=11 format=3 uid="uid://cfx8wqn1s1nx"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Scripts/Scenes/main_menu.gd" id="1_ebw68"]
 [ext_resource type="Texture2D" uid="uid://bj2b2quukwm3r" path="res://Graphics Assets/Main Menu/dinosaurgamelogo.png" id="2_e8os3"]
+[ext_resource type="Texture2D" uid="uid://fbb3aeg08mwu" path="res://Graphics Assets/Main Menu/edit_button.png" id="3_phgk3"]
 [ext_resource type="Texture2D" uid="uid://di0y5geujub2e" path="res://Graphics Assets/Main Menu/playbutton.png" id="3_vq0mh"]
 [ext_resource type="Texture2D" uid="uid://8yqsbk6ptcxb" path="res://Graphics Assets/Main Menu/pixilart-drawing (2).png" id="5_pxh5o"]
 [ext_resource type="Texture2D" uid="uid://mg1mo3odvm3j" path="res://Graphics Assets/Main Menu/credits.png" id="6_vpw38"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://bbmwj5d76wj16" path="res://Scenes/Prefabs/og_dino.tscn" id="7_gf1l5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3m83"]
+size = Vector2(1184, 164)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f3w6"]
+size = Vector2(150, 60)
+>>>>>>> Stashed changes
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -49,7 +64,7 @@ scale = Vector2(6.13, 5.72)
 texture = ExtResource("2_e8os3")
 metadata/_edit_lock_ = true
 
-[node name="play button" type="TextureButton" parent="."]
+[node name="EditBtn" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,14 +72,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -75.0
-offset_top = -11.0
+offset_top = 35.0
 offset_right = -45.0
-offset_bottom = 1.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
-texture_normal = ExtResource("3_vq0mh")
-metadata/_edit_lock_ = true
+texture_normal = ExtResource("3_phgk3")
 
 [node name="PlayModeBtn" type="TextureButton" parent="."]
 layout_mode = 1
@@ -73,10 +87,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 179.0
-offset_top = -14.0
-offset_right = 209.0
-offset_bottom = -2.0
+offset_left = -75.0
+offset_top = -34.0
+offset_right = -45.0
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
@@ -85,23 +99,81 @@ texture_normal = ExtResource("3_vq0mh")
 [node name="settings button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 502.0
-offset_top = 383.0
+offset_top = 429.0
 offset_right = 532.0
-offset_bottom = 395.0
+offset_bottom = 441.0
 scale = Vector2(5, 5)
 texture_normal = ExtResource("5_pxh5o")
-metadata/_edit_lock_ = true
 
 [node name="credits button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 502.0
-offset_top = 452.0
+offset_top = 498.0
 offset_right = 532.0
-offset_bottom = 464.0
+offset_bottom = 510.0
 scale = Vector2(5, 5)
 texture_normal = ExtResource("6_vpw38")
-metadata/_edit_lock_ = true
 
+<<<<<<< Updated upstream
 [connection signal="pressed" from="quit button" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="play button" to="." method="_on_play_button_pressed"]
+=======
+[node name="exit button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1086.0
+offset_top = 5.0
+offset_right = 1136.0
+offset_bottom = 53.0
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("6_27tc1")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(576, 685)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_w3m83")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(653, -98)
+rotation = 1.56697
+shape = SubResource("RectangleShape2D_w3m83")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-648, -104)
+rotation = 1.56697
+shape = SubResource("RectangleShape2D_w3m83")
+
+[node name="OGDino" parent="." instance=ExtResource("7_gf1l5")]
+position = Vector2(183, 275)
+
+[node name="OGDino2" parent="." instance=ExtResource("7_gf1l5")]
+position = Vector2(517, 15)
+
+[node name="OGDino3" parent="." instance=ExtResource("7_gf1l5")]
+position = Vector2(955, 112)
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(576, 320)
+shape = SubResource("RectangleShape2D_8f3w6")
+
+[node name="green grass" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -26.0
+offset_top = 598.0
+offset_right = 1185.0
+offset_bottom = 728.0
+color = Color(0.498039, 0.698039, 0.219608, 1)
+
+[node name="dirt brown" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -22.0
+offset_top = 612.0
+offset_right = 1192.0
+offset_bottom = 742.0
+color = Color(0.545098, 0.270588, 0.0745098, 1)
+
+[connection signal="pressed" from="EditBtn" to="." method="_on_play_button_pressed"]
+>>>>>>> Stashed changes
 [connection signal="pressed" from="PlayModeBtn" to="." method="_on_play_mode_btn_pressed"]

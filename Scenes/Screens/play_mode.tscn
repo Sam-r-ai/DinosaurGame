@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://2j0scq6o8os4"]
+[gd_scene load_steps=45 format=3 uid="uid://2j0scq6o8os4"]
 
 [ext_resource type="Script" path="res://Scripts/Play Mode/play_mode.gd" id="1_1miux"]
 [ext_resource type="PackedScene" uid="uid://dvtnux5cehs7f" path="res://Scenes/Prefabs/note.tscn" id="2_0o1h3"]
@@ -15,7 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bbrewk45glaf1" path="res://Graphics Assets/Characters/dino.png" id="10_nqakx"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/dino.gd" id="11_5ncnn"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/trigger_reciever.gd" id="12_lur83"]
+[ext_resource type="Script" path="res://Scripts/Play Mode/results_display.gd" id="15_puorc"]
 [ext_resource type="Texture2D" uid="uid://du1a1fiji8b4t" path="res://Graphics Assets/Play Mode/ResultsDisplay.png" id="16_lx43k"]
+[ext_resource type="PackedScene" uid="uid://byw5q4o1poypo" path="res://Scenes/Prefabs/rank_display.tscn" id="18_21fug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umqgk"]
 size = Vector2(64, 20)
@@ -310,7 +312,7 @@ script/source = "extends ProgressBar
 @export var label : Label;
 "
 
-[node name="PlayMode" type="Node2D" node_paths=PackedStringArray("track", "song_player", "note_catcher", "trigger_reciever", "start_label", "pause_menu", "score_display", "dino", "dino_close_up")]
+[node name="PlayMode" type="Node2D" node_paths=PackedStringArray("track", "song_player", "note_catcher", "trigger_reciever", "results_display", "start_label", "pause_menu", "score_display", "dino", "dino_close_up")]
 process_mode = 1
 script = ExtResource("1_1miux")
 bot_play_active = true
@@ -322,6 +324,7 @@ track = NodePath("Track")
 song_player = NodePath("SongPlayer")
 note_catcher = NodePath("NoteCatchers/NoteCatcher")
 trigger_reciever = NodePath("NoteCatchers/Trigger Reciever")
+results_display = NodePath("UI/ResultsDisplay")
 start_label = NodePath("UI/GameInfo/StartLabel")
 pause_menu = NodePath("UI/PauseMenu")
 score_display = NodePath("UI/GameInfo/ScoreDisplay")
@@ -366,9 +369,10 @@ play_mode = NodePath("../..")
 shape = SubResource("RectangleShape2D_umqgk")
 metadata/_edit_lock_ = true
 
-[node name="MissZone" type="Area2D" parent="NoteCatchers" node_paths=PackedStringArray("miss_display")]
+[node name="MissZone" type="Area2D" parent="NoteCatchers" node_paths=PackedStringArray("play_mode", "miss_display")]
 position = Vector2(-160, 360)
 script = ExtResource("4_k415y")
+play_mode = NodePath("../..")
 miss_display = NodePath("../../UI/GameInfo/MissDIsplay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoteCatchers/MissZone"]
@@ -463,7 +467,7 @@ text = "Press Space to Start!"
 label_settings = SubResource("LabelSettings_ofn70")
 horizontal_alignment = 1
 
-[node name="ResultsDisplay" type="Control" parent="UI"]
+[node name="ResultsDisplay" type="Control" parent="UI" node_paths=PackedStringArray("play_mode", "score_display", "miss_display", "accuracy_display", "rank_display")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -477,6 +481,12 @@ offset_right = 320.0
 offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("15_puorc")
+play_mode = NodePath("../..")
+score_display = NodePath("VBoxContainer/Score")
+miss_display = NodePath("VBoxContainer/Misses")
+accuracy_display = NodePath("VBoxContainer/Accuracy")
+rank_display = NodePath("RankDisplay")
 
 [node name="Panel" type="Panel" parent="UI/ResultsDisplay"]
 layout_mode = 1
@@ -486,11 +496,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="RankDisplay" parent="UI/ResultsDisplay" instance=ExtResource("18_21fug")]
+position = Vector2(446.5, 210.5)
+
 [node name="Sprite2D" type="Sprite2D" parent="UI/ResultsDisplay"]
 texture = ExtResource("16_lx43k")
 centered = false
 
-[node name="Button" type="Button" parent="UI/ResultsDisplay"]
+[node name="PlayAgainBtn" type="Button" parent="UI/ResultsDisplay"]
 layout_mode = 2
 offset_left = 121.5
 offset_top = 325.5
@@ -498,7 +511,7 @@ offset_right = 320.5
 offset_bottom = 356.5
 text = "Play Again"
 
-[node name="Button2" type="Button" parent="UI/ResultsDisplay"]
+[node name="MenuBtn" type="Button" parent="UI/ResultsDisplay"]
 layout_mode = 2
 offset_left = 336.0
 offset_top = 326.0
@@ -515,7 +528,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -189.0
 offset_top = -72.0
-offset_right = 189.0
+offset_right = 7.0
 offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -535,6 +548,7 @@ text = "Misses: "
 horizontal_alignment = 1
 
 [node name="Accuracy" type="Label" parent="UI/ResultsDisplay/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("5_sfb4n")
 theme_override_font_sizes/font_size = 32
@@ -638,9 +652,12 @@ horizontal_alignment = 1
 [node name="ResumeTimer" type="Timer" parent="UI/PauseMenu"]
 wait_time = 3.0
 
+[connection signal="finished" from="SongPlayer" to="." method="_on_song_player_finished"]
 [connection signal="area_entered" from="NoteCatchers/Trigger Reciever" to="NoteCatchers/Trigger Reciever" method="_on_area_entered"]
 [connection signal="area_entered" from="NoteCatchers/MissZone" to="NoteCatchers/MissZone" method="_on_area_entered"]
 [connection signal="animation_finished" from="Characters/CloseUp/AnimationPlayer" to="Characters/CloseUp" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="UI/ResultsDisplay/PlayAgainBtn" to="." method="restart_scene"]
+[connection signal="pressed" from="UI/ResultsDisplay/MenuBtn" to="." method="_on_pause_menu_quit_button_pressed"]
 [connection signal="edit_button_pressed" from="UI/PauseMenu" to="." method="enter_edit_mode"]
 [connection signal="previous_scene_button_pressed" from="UI/PauseMenu" to="." method="_on_pause_menu_previous_scene_button_pressed"]
 [connection signal="quit_button_pressed" from="UI/PauseMenu" to="." method="_on_pause_menu_quit_button_pressed"]
