@@ -1,0 +1,108 @@
+[gd_scene load_steps=14 format=3 uid="uid://datgq6olycrpr"]
+
+[ext_resource type="Texture2D" uid="uid://bcbndk4t8rgd3" path="res://Graphics Assets/Play Mode/ranks-Sheet.png" id="1_0w06i"]
+[ext_resource type="Script" path="res://Scripts/Play Mode/rank_display.gd" id="2_522jg"]
+[ext_resource type="Texture2D" uid="uid://bb3o08vvjl3qq" path="res://Graphics Assets/Play Mode/OutlineS.png" id="3_awxbe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql8an"]
+atlas = ExtResource("1_0w06i")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0fvg"]
+atlas = ExtResource("1_0w06i")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qfgk"]
+atlas = ExtResource("1_0w06i")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llk8m"]
+atlas = ExtResource("1_0w06i")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnw61"]
+atlas = ExtResource("1_0w06i")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bddu3"]
+atlas = ExtResource("1_0w06i")
+region = Rect2(960, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4pr0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql8an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0fvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qfgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llk8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnw61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bddu3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_mdpbh"]
+resource_name = "rainbow"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(1, 0, 0.0166664, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dr2vq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7m8x"]
+_data = {
+"RESET": SubResource("Animation_dr2vq"),
+"rainbow": SubResource("Animation_mdpbh")
+}
+
+[node name="RankDisplay" type="AnimatedSprite2D" node_paths=PackedStringArray("anim", "s_outline")]
+sprite_frames = SubResource("SpriteFrames_j4pr0")
+script = ExtResource("2_522jg")
+anim = NodePath("AnimationPlayer")
+s_outline = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_awxbe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c7m8x")
+}
