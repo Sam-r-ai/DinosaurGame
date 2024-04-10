@@ -315,7 +315,6 @@ script/source = "extends ProgressBar
 [node name="PlayMode" type="Node2D" node_paths=PackedStringArray("track", "song_player", "note_catcher", "trigger_reciever", "results_display", "start_label", "pause_menu", "score_display", "dino", "dino_close_up")]
 process_mode = 1
 script = ExtResource("1_1miux")
-bot_play_active = true
 pixels_per_second = 600
 note_scene = ExtResource("2_0o1h3")
 held_note_scene = ExtResource("3_34biu")

@@ -34,6 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.552941, 0.8, 0.941176, 1)
+color = Color(0.552941, 0.8, 0.941176, 1)
 metadata/_edit_lock_ = true
 
 [node name="Dinosaurgamelogo" type="Sprite2D" parent="."]
