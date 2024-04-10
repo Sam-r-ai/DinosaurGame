@@ -10,7 +10,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # Random movement variables
 var random_direction = 0
 var flip_scale_speed = 5 # Speed of flipping
-var target_scale_x = 1 # Target X scale for flipping effect
+var target_scale_x = 2 # Target X scale for flipping effect
 
 func _ready():
 	randomize() # Initialize random number generator
@@ -26,7 +26,7 @@ func _physics_process(delta):
 	if randi() % 60 == 0: # Approximately once per second, adjust this for more/less frequent changes
 		random_direction = randf_range(-1, 1)
 		# Determine the flip direction
-		target_scale_x = -1 if random_direction < 0 else 1
+		target_scale_x = -2 if random_direction < 0 else 2;
 
 	velocity.x = move_toward(velocity.x, random_direction * SPEED, SPEED * delta)
 

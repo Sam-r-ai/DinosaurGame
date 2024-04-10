@@ -26,7 +26,7 @@ script = ExtResource("1_qbmoc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(35, 30)
-scale = Vector2(2, 2.126)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ihhty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
