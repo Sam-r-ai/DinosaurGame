@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbmwj5d76wj16"]
 
-[ext_resource type="Script" path="res://Scenes/Prefabs/og_dino.gd" id="1_qbmoc"]
+[ext_resource type="Script" path="res://Scripts/Misc/og_dino.gd" id="1_qbmoc"]
 [ext_resource type="Texture2D" uid="uid://3dh0ce2lc04w" path="res://Graphics Assets/Main Menu/OGDino.png" id="2_kh6pa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51ksu"]
