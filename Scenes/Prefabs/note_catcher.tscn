@@ -127,7 +127,7 @@ lifetime_randomness = 0.4
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(80, 0, 0)
 emission_shape = 3
-emission_box_extents = Vector3(40, 1, 1)
+emission_box_extents = Vector3(30, 1, 1)
 direction = Vector3(0, -1, 0)
 spread = 0.0
 initial_velocity_min = 294.6
@@ -166,7 +166,7 @@ libraries = {
 [node name="HeldNoteHit" type="GPUParticles2D" parent="."]
 position = Vector2(0, -19)
 emitting = false
-amount = 16
+amount = 40
 process_material = SubResource("ParticleProcessMaterial_3qh7q")
 texture = ExtResource("8_qkvrh")
 lifetime = 0.5
