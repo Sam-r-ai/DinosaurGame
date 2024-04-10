@@ -34,6 +34,10 @@ func state_physics_process(delta):
 		if grid.get_grid_position(note.global_position).x > 5:
 			var wrap_spaces = grid.get_grid_position(note.global_position).x - 5;
 			note.global_position.x = (wrap_spaces) * grid.SPACE_SIZE.x
+		
+		if grid.get_grid_position(note.global_position).x < 1:
+			var wrap_spaces = 5 + grid.get_grid_position(note.global_position).x;
+			note.global_position.x = (wrap_spaces) * grid.SPACE_SIZE.x
 	
 	if Input.is_action_just_pressed("Left Click") and cursor.is_mouse_in_range():
 		place_notes();

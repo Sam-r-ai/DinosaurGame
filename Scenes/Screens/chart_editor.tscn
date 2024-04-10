@@ -155,7 +155,7 @@ _data = {
 "hit": SubResource("Animation_qqqwv")
 }
 
-[node name="ChartEditor" type="Node2D" node_paths=PackedStringArray("cursor", "note_parent", "trigger_parent", "camera", "song_player", "song_progress_line", "grid", "save_manager")]
+[node name="ChartEditor" type="Node2D" node_paths=PackedStringArray("cursor", "note_parent", "trigger_parent", "camera", "song_player", "song_progress_line", "grid", "save_manager", "spaces_per_beat_display")]
 script = ExtResource("1_7v430")
 cursor = NodePath("Cursor")
 note_prefab = ExtResource("2_8hw46")
@@ -168,6 +168,7 @@ song_player = NodePath("SongPlayer")
 song_progress_line = NodePath("SongProgressLine")
 grid = NodePath("Grid")
 save_manager = NodePath("SaveManager")
+spaces_per_beat_display = NodePath("Camera2D/EditorUI/TabContainer/Chart/TimeSigInput")
 
 [node name="SaveManager" type="Node2D" parent="." node_paths=PackedStringArray("chart_editor", "note_parent", "trigger_parent", "chart_name_label", "paste_state")]
 script = ExtResource("4_ejosn")
