@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ma4ah6ep4xgc"
-path="res://.godot/imported/ranks-Sheet.png-66def50576ffd16aac754e04d471624f.ctex"
+uid="uid://kymojwlmtd55"
+path="res://.godot/imported/RainbowS.png-197eaeda74effd56507fd22ace2b2bf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics Assets/Play Mode/ranks-Sheet.png"
-dest_files=["res://.godot/imported/ranks-Sheet.png-66def50576ffd16aac754e04d471624f.ctex"]
+source_file="res://Graphics Assets/Play Mode/RainbowS.png"
+dest_files=["res://.godot/imported/RainbowS.png-197eaeda74effd56507fd22ace2b2bf4.ctex"]
 
 [params]
 

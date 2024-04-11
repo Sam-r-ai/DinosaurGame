@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ma4ah6ep4xgc"
-path="res://.godot/imported/ranks-Sheet.png-66def50576ffd16aac754e04d471624f.ctex"
+uid="uid://d2rb0taelvfsk"
+path="res://.godot/imported/Sam-r-ai.png-47ce081d14dd5d13ced8a66c66419055.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics Assets/Play Mode/ranks-Sheet.png"
-dest_files=["res://.godot/imported/ranks-Sheet.png-66def50576ffd16aac754e04d471624f.ctex"]
+source_file="res://Graphics Assets/Main Menu/Sam-r-ai.png"
+dest_files=["res://.godot/imported/Sam-r-ai.png-47ce081d14dd5d13ced8a66c66419055.ctex"]
 
 [params]
 

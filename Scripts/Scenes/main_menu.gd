@@ -11,7 +11,6 @@ func _on_play_button_pressed():
 
 func _on_play_mode_btn_pressed():
 	scene_parameters["destination scene"] = "play mode";
-	
 	change_scene.emit(scene_name, "chart select");
 
 

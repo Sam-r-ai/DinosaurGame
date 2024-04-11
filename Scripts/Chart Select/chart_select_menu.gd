@@ -28,6 +28,7 @@ func load_scene_parameters(new_scene_parameters):
 	if destination_scene == "chart editor":
 		new_chart_button.visible = true;
 
+
 func select_chart(path, button):
 	print("chart select recieved");
 	var save_dictionary : Dictionary = {};

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ma4ah6ep4xgc"
-path="res://.godot/imported/ranks-Sheet.png-66def50576ffd16aac754e04d471624f.ctex"
+uid="uid://fbb3aeg08mwu"
+path="res://.godot/imported/edit_button.png-643d77748766ab7a013250aa0b5fa14d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics Assets/Play Mode/ranks-Sheet.png"
-dest_files=["res://.godot/imported/ranks-Sheet.png-66def50576ffd16aac754e04d471624f.ctex"]
+source_file="res://Graphics Assets/Main Menu/edit_button.png"
+dest_files=["res://.godot/imported/edit_button.png-643d77748766ab7a013250aa0b5fa14d.ctex"]
 
 [params]
 
