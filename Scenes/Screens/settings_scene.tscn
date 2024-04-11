@@ -25,31 +25,43 @@ offset_left = 156.0
 offset_top = 242.0
 offset_right = 278.0
 offset_bottom = 329.0
-text = "Lane 1"
+text = "d"
 alignment = 1
+max_length = 1
 
 [node name="LineEdit2" type="LineEdit" parent="."]
 offset_left = 331.0
 offset_top = 242.0
 offset_right = 453.0
 offset_bottom = 329.0
+text = "f"
+alignment = 1
 
 [node name="LineEdit3" type="LineEdit" parent="."]
 offset_left = 507.0
 offset_top = 243.0
 offset_right = 629.0
 offset_bottom = 330.0
+text = "h"
+alignment = 1
+max_length = 1
 
 [node name="LineEdit4" type="LineEdit" parent="."]
 offset_left = 681.0
 offset_top = 243.0
 offset_right = 803.0
 offset_bottom = 330.0
+text = "j"
+alignment = 1
+max_length = 1
 
 [node name="LineEdit5" type="LineEdit" parent="."]
 offset_left = 855.0
 offset_top = 243.0
 offset_right = 977.0
 offset_bottom = 330.0
+text = "k"
+alignment = 1
+max_length = 1
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
