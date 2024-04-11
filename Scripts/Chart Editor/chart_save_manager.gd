@@ -68,7 +68,6 @@ func save_chart():
 	print("Chart: " + str(chart_name) + " Saved");
 
 func load_chart():
-	print(" ");
 	print("Chart Load Path: " + str(chart_path));
 	var chart_file = FileAccess.open(chart_path, FileAccess.READ);
 	if FileAccess.file_exists(chart_path):
@@ -82,12 +81,11 @@ func load_chart():
 			else:
 				print("chart load failed: data = null");
 	
-	
 	clear_chart();
 	
 	chart_name = save_dictionary["name"];
 	chart_editor.bpm = save_dictionary["bpm"];
-	chart_editor.song = load(save_dictionary["song path"]);
+	chart_editor.song = load_mp3(save_dictionary["song path"]);
 	note_dictionary = save_dictionary["notes"];
 	if save_dictionary.has("triggers"):
 		print("found triggers in save dictionary")
@@ -130,8 +128,6 @@ func load_chart():
 		
 		new_note.lane = note_data[0];
 		new_note.timestamp = note_data[1];
-
-	
 	
 	for entry in trigger_dictionary:
 		var new_trigger : Trigger = chart_editor.trigger_prefab.instantiate();
@@ -156,5 +152,9 @@ func clear_chart():
 	for trigger in trigger_parent.get_children():
 		trigger.queue_free();
 
-func on_name_text_submitted(new_text : String):
-	pass;
+func load_mp3(path):
+	print(path);
+	var file = FileAccess.open(path, FileAccess.READ)
+	var sound = AudioStreamMP3.new()
+	sound.data = file.get_buffer(file.get_length());
+	return sound

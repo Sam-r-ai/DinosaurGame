@@ -41,16 +41,12 @@ var accuracy : float = 0;
 
 var close_up_active : bool = false;
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass;
-
 func load_scene_parameters(new_scene_parameters):
 	scene_parameters = new_scene_parameters;
 	chart_path = scene_parameters["chart path"];
 	load_chart();
 	
-	song_player.stream = load(song_path);
+	song_player.stream = load_mp3(song_path);
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("Editor - Play or Pause") and !song_started:
@@ -187,3 +183,9 @@ func end_song_cheat():
 	misses = 0;
 	accuracy = 100;
 	song_player.seek(song_player.stream.get_length() - 1);
+
+func load_mp3(path):
+	var file = FileAccess.open(path, FileAccess.READ)
+	var sound = AudioStreamMP3.new()
+	sound.data = file.get_buffer(file.get_length())
+	return sound

@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctuegpkadmebu"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/status_display.gd" id="1_j7awd"]
+[ext_resource type="Theme" uid="uid://u2vkss84xngl" path="res://Graphics Assets/default_theme.tres" id="1_u6dfc"]
+
+[sub_resource type="Animation" id="Animation_5bnll"]
+resource_name = "fade out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_768uc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cc54"]
+_data = {
+"RESET": SubResource("Animation_768uc"),
+"fade out": SubResource("Animation_5bnll")
+}
+
+[node name="StatusDisplay" type="Label" node_paths=PackedStringArray("anim", "timer")]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_u6dfc")
+theme_override_font_sizes/font_size = 32
+text = "Status Display"
+script = ExtResource("1_j7awd")
+anim = NodePath("AnimationPlayer")
+timer = NodePath("Timer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2cc54")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="fade_out"]

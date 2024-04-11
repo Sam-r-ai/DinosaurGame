@@ -1,8 +1,6 @@
 extends Node
 
-const SONGS_DIRECTORY = "res://Sound Assets/Songs/";
-const USER_SONGS_DIRECTORY = "user://User Songs";
-const CHARTS_PATH = "res://Charts/";
+const USER_SONGS_DIRECTORY = "user://Songs";
 
 signal chart_initialized(path);
 
@@ -17,7 +15,8 @@ var user_song_dictionary = {};
 var song_count : int = 0;
 
 func _ready():
-	get_audio_streams_in_dir(SONGS_DIRECTORY)
+	var songs_directory = OS.get_user_data_dir() + "/Songs";
+	get_user_audio_streams_in_dir();
 
 func get_audio_streams_in_dir(path):
 	var dir = DirAccess.open(path)
@@ -33,10 +32,13 @@ func get_audio_streams_in_dir(path):
 					add_song_option(path + "/" + file_name, file_name);
 			file_name = dir.get_next()
 
-func get_user_audio_streams_in_dir(path):
-	print("get user audio streams called");
+func get_user_audio_streams_in_dir():
+	song_field.clear();
+	song_option_dictionary.clear();
+	song_count = 0;
 	
-	var dir = DirAccess.open(path)
+	
+	var dir = DirAccess.open(USER_SONGS_DIRECTORY)
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
@@ -45,11 +47,8 @@ func get_user_audio_streams_in_dir(path):
 			if dir.current_is_dir():
 				print("Found directory: " + file_name)
 			else:
-				if load(path + "/" + file_name) is AudioStream:
-					print(file_name + " IS AudioStream");
-					#add_user_song_option(path + "/" + file_name, file_name);
-				else:
-					print(file_name + "file is NOT AudioStream");
+				if file_name.get_extension() == "mp3":
+					add_song_option(USER_SONGS_DIRECTORY + "/" + file_name, file_name);
 			file_name = dir.get_next()
 		print("reached end of directory");
 	else:
@@ -60,18 +59,15 @@ func add_song_option(path, name):
 	song_option_dictionary[song_count+1] = path;
 	song_count += 1;
 
-func add_user_song_option(path, name):
-	if !user_song_dictionary.values().has(path):
-		return
-	song_field.add_item(name, song_count);
-	user_song_dictionary[user_song_dictionary.size()] = path;
-
 func initialize_chart():
 	var name = name_field.text;
 	var bpm = bpm_field.value;
 	var song_path = song_option_dictionary[song_field.selected];
 	
-	var chart_path = "res://Charts/" + name + ".bin";
+	var chart_path = OS.get_user_data_dir() + "/Charts/" + name + ".bin";
+	print(chart_path);
+	
+	#"res://Charts/" + name + ".bin";
 	var chart_file = FileAccess.open(chart_path, FileAccess.WRITE);
 	
 	var note_count : int = 0;
@@ -90,3 +86,9 @@ func initialize_chart():
 	
 	chart_initialized.emit(chart_path);
 	#get_tree().change_scene_to_file("res://Scenes/Screens/chart_editor.tscn");
+
+func load_mp3(path):
+	var file = FileAccess.open(path, FileAccess.READ)
+	var sound = AudioStreamMP3.new()
+	sound.data = file.get_buffer(file.get_length())
+	return sound
