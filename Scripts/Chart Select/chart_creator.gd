@@ -2,11 +2,15 @@ extends Node
 
 const USER_SONGS_DIRECTORY = "user://Songs";
 
-signal chart_initialized(path);
+signal chart_initialized();
+
+@export var chart_select : ChartSelect;
 
 @export var song_field : OptionButton;
 @export var bpm_field : SpinBox;
 @export var name_field : LineEdit;
+
+@export var no_songs_prompt : Label;
 
 @onready var songs_directory = OS.get_user_data_dir() + "/Songs";
 
@@ -32,6 +36,7 @@ func get_audio_streams_in_dir(path):
 			file_name = dir.get_next()
 
 func get_user_audio_streams_in_dir():
+	no_songs_prompt.visible = true;
 	check_songs_dir_exists();
 	
 	song_field.clear();
@@ -54,13 +59,17 @@ func get_user_audio_streams_in_dir():
 		print("reached end of directory");
 	else:
 		print("error opening path");
+	
+	if song_count > 0:
+		no_songs_prompt.visible = false;
 
 func add_song_option(path, name):
 	song_field.add_item(name, song_count);
-	song_option_dictionary[song_count+1] = path;
+	song_option_dictionary[song_count] = path;
 	song_count += 1;
 
 func initialize_chart():
+	print("initializing chart");
 	var name = name_field.text;
 	var bpm = bpm_field.value;
 	var song_path = song_option_dictionary[song_field.selected];
@@ -85,8 +94,10 @@ func initialize_chart():
 	chart_file.store_line(jstr);
 	print("Chart: " + str(name) + " Created");
 	
-	chart_initialized.emit(chart_path);
-	#get_tree().change_scene_to_file("res://Scenes/Screens/chart_editor.tscn");
+	chart_select.reload_charts();
+	
+	print("chart initialized emitted");
+	chart_initialized.emit();
 
 func load_mp3(path):
 	var file = FileAccess.open(path, FileAccess.READ)

@@ -1,5 +1,7 @@
 extends SceneRoot
 
+class_name ChartSelect;
+
 const CHART_PATH = "res://Charts/";
 
 @export var new_chart_button : Button;
@@ -9,8 +11,9 @@ const CHART_PATH = "res://Charts/";
 @export var chart_button_container : VBoxContainer
 
 @export var status_display : StatusDisplay;
-
 @export var back_button : TextureButton;
+
+@export var no_charts_prompt : Label;
 
 var destination_scene : String = " ";
 var buttons_created : int = 0;
@@ -21,7 +24,6 @@ func _ready():
 	charts_directory = OS.get_user_data_dir() + "/Charts/";
 	
 	check_charts_dir_exists();
-	
 	get_chart_files_in_dir(charts_directory);
 
 func load_scene_parameters(new_scene_parameters):
@@ -33,7 +35,7 @@ func load_scene_parameters(new_scene_parameters):
 	if destination_scene == "chart editor":
 		new_chart_button.visible = true;
 
-func select_chart(path, button):
+func select_chart(path):
 	print("chart select recieved");
 	var save_dictionary : Dictionary = {};
 	
@@ -56,7 +58,7 @@ func select_chart(path, button):
 		return;
 	
 	if !FileAccess.file_exists(save_dictionary["song path"]):
-		status_display.display_message("Song Path Invalid, mp3 file may be missing from Songs Folder", Color(1,0,0));
+		status_display.display_message(save_dictionary["song path"] + "Invalid, mp3 file may be missing from Songs Folder", Color(1,0,0));
 	else:
 		scene_parameters["chart path"] = path;
 		
@@ -102,6 +104,7 @@ func _on_cancel_btn_pressed():
 			button.disabled = false;
 
 func get_chart_files_in_dir(path):
+	no_charts_prompt.visible = true;
 	check_charts_dir_exists();
 	
 	var dir = DirAccess.open(path)
@@ -117,6 +120,9 @@ func get_chart_files_in_dir(path):
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
+	
+	if chart_button_container.get_children().size() > 0:
+		no_charts_prompt.visible = false;
 
 func create_chart_access_button(chart_name : String, chart_path : String):
 	var new_button = chart_button_scene.instantiate();
@@ -136,6 +142,7 @@ func create_chart_access_button(chart_name : String, chart_path : String):
 	buttons_created += 1;
 	
 	new_button.chart_selected.connect(select_chart);
+	print("button connected");
 
 func reload_charts():
 	status_display.display_message("Charts Reloaded", Color(0,1,0));
