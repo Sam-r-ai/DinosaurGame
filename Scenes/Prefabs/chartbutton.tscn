@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbakb505pt4ew"]
+[gd_scene load_steps=3 format=3 uid="uid://cbakb505pt4ew"]
 
 [ext_resource type="Script" path="res://Scripts/Chart Select/chartbutton.gd" id="1_4qudk"]
+[ext_resource type="Theme" uid="uid://u2vkss84xngl" path="res://Graphics Assets/default_theme.tres" id="1_v3jgo"]
 
 [node name="ChartButton" type="Button"]
-offset_right = 93.0
+offset_right = 320.0
 offset_bottom = 32.0
+theme = ExtResource("1_v3jgo")
+theme_override_font_sizes/font_size = 32
 text = "[null chart]"
 script = ExtResource("1_4qudk")
 
