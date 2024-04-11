@@ -10,6 +10,8 @@ const CHART_PATH = "res://Charts/";
 
 @export var status_display : StatusDisplay;
 
+@export var back_button : TextureButton;
+
 var destination_scene : String = " ";
 var buttons_created : int = 0;
 
@@ -27,7 +29,6 @@ func load_scene_parameters(new_scene_parameters):
 	
 	if destination_scene == "chart editor":
 		new_chart_button.visible = true;
-
 
 func select_chart(path, button):
 	print("chart select recieved");
@@ -63,6 +64,8 @@ func select_chart(path, button):
 		for child in chart_button_container.get_children():
 			if child is Button:
 				child.disabled = true;
+		
+		back_button.disabled = true;
 		
 		change_scene.emit(scene_name, destination_scene);
 
@@ -130,3 +133,18 @@ func reload_charts():
 
 func _on_reload_songs_btn_pressed():
 	status_display.display_message("Songs Reloaded", Color(0,1,0));
+
+func _on_back_button_pressed():
+	for child in file_button_container.get_children():
+		if child is Button:
+			var button : Button = child;
+			button.disabled = false;
+	
+	for child in chart_button_container.get_children():
+		if child is Button:
+			var button : Button = child;
+			button.disabled = false;
+	
+	back_button.disabled = true;
+	
+	change_scene.emit(scene_name, "main menu");

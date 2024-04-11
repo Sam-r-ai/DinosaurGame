@@ -69,6 +69,7 @@ func place_notes():
 	
 	pasted_notes.clear();
 	load_clipboard();
+	chart_editor.status_display.display_message("Pasted!", Color(0,1,0));
 
 func load_clipboard():
 	for entry in cursor.clipboard:

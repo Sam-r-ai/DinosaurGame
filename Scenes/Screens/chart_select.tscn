@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://doswc14c0og5p"]
+[gd_scene load_steps=8 format=3 uid="uid://doswc14c0og5p"]
 
 [ext_resource type="Script" path="res://Scripts/Chart Select/chart_select_menu.gd" id="1_7hymb"]
 [ext_resource type="PackedScene" uid="uid://cbakb505pt4ew" path="res://Scenes/Prefabs/chartbutton.tscn" id="2_0n2hu"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/Chart Select/add_songs_button.gd" id="4_ayqiu"]
 [ext_resource type="Script" path="res://Scripts/Chart Editor/editor_ui_button.gd" id="5_2h1nx"]
 [ext_resource type="PackedScene" uid="uid://ctuegpkadmebu" path="res://Scenes/Prefabs/status_display.tscn" id="5_jy4dv"]
+[ext_resource type="Texture2D" uid="uid://bhmhc47c3unkn" path="res://Graphics Assets/Main Menu/backbutton.png" id="7_vs4ve"]
 
-[node name="ChartSelectMenu" type="Control" node_paths=PackedStringArray("new_chart_button", "create_chart_window", "file_button_container", "chart_button_container", "status_display")]
+[node name="ChartSelectMenu" type="Control" node_paths=PackedStringArray("new_chart_button", "create_chart_window", "file_button_container", "chart_button_container", "status_display", "back_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +22,7 @@ chart_button_scene = ExtResource("2_0n2hu")
 file_button_container = NodePath("FileAccessBtns")
 chart_button_container = NodePath("ScrollContainer/ChartBtns")
 status_display = NodePath("StatusDisplay")
+back_button = NodePath("BackButton")
 
 [node name="ChartCreator" type="Node" parent="." node_paths=PackedStringArray("song_field", "bpm_field", "name_field")]
 script = ExtResource("3_nhrd1")
@@ -61,7 +63,7 @@ script = ExtResource("5_2h1nx")
 metadata/_edit_lock_ = true
 
 [node name="NewChartBtn" type="Button" parent="FileAccessBtns"]
-visible = false
+modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 text = "Create Chart
 "
@@ -186,6 +188,22 @@ offset_right = 197.0
 offset_bottom = 0.0
 grow_vertical = 0
 
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -78.0
+offset_right = -135.0
+offset_bottom = -66.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("7_vs4ve")
+
 [connection signal="chart_initialized" from="ChartCreator" to="." method="select_chart"]
 [connection signal="pressed" from="FileAccessBtns/AddSongsBtn" to="FileAccessBtns/AddSongsBtn" method="open_songs_dir"]
 [connection signal="pressed" from="FileAccessBtns/ReloadSongsBtn" to="." method="_on_reload_songs_btn_pressed"]
@@ -196,3 +214,4 @@ grow_vertical = 0
 [connection signal="pressed" from="FileAccessBtns/NewChartBtn" to="ChartCreator" method="get_user_audio_streams_in_dir"]
 [connection signal="pressed" from="CreateChartWindow/Panel/CreateBtn" to="ChartCreator" method="initialize_chart"]
 [connection signal="pressed" from="CreateChartWindow/Panel/CancelBtn" to="." method="_on_cancel_btn_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

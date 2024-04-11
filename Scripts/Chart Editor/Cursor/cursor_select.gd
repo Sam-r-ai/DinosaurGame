@@ -42,6 +42,7 @@ func state_physics_process(delta):
 			for area in selection_box.get_overlapping_areas():
 				if area is ChartNote:
 					add_note_to_clipboard(area);
+			chart_editor.status_display.display_message("Copied!", Color(0,1,0));
 			
 		elif Input.is_action_just_pressed("Editor - Cut"):
 			cursor.clipboard.clear();
@@ -50,11 +51,13 @@ func state_physics_process(delta):
 				if area is ChartNote:
 					add_note_to_clipboard(area);
 					area.queue_free();
+			chart_editor.status_display.display_message("Cut!", Color(0,1,0));
 			
 		elif Input.is_action_just_pressed("Editor - Delete"):
 			for area in selection_box.get_overlapping_areas():
 				if area is ChartNote:
 					area.queue_free();
+			chart_editor.status_display.display_message("Deleted!", Color(0,1,0))
 			
 		elif Input.is_action_pressed("Editor - Paste"):
 			change_state.emit(self, "Paste");

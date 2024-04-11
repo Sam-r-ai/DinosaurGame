@@ -12,6 +12,8 @@ var chart_name = "default"
 
 @export var paste_state : State;
 
+@export var status_display : StatusDisplay;
+
 @onready var grid : Grid = chart_editor.grid;
 
 
@@ -66,6 +68,7 @@ func save_chart():
 	
 	chart_file.store_line(jstr);
 	print("Chart: " + str(chart_name) + " Saved");
+	status_display.display_message(chart_name + " Saved", Color(0,1,0));
 
 func load_chart():
 	print("Chart Load Path: " + str(chart_path));
@@ -145,12 +148,14 @@ func load_chart():
 	
 	chart_name_label.text = chart_name;
 	print("Chart: " + str(chart_name) + " Loaded");
+	status_display.display_message(chart_name + " Loaded", Color(0,1,0));
 
 func clear_chart():
 	for note in note_parent.get_children():
 		note.queue_free();
 	for trigger in trigger_parent.get_children():
 		trigger.queue_free();
+	status_display.display_message("Chart Cleared", Color(0,1,0));
 
 func load_mp3(path):
 	print(path);

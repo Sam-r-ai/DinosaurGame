@@ -24,11 +24,14 @@ var bpm : float;
 @export var save_manager : SaveManager; 
 @export var spaces_per_beat_display : SpinBox;
 
+@export var status_display : StatusDisplay;
+
 var seconds_per_beat : float;
 var beats_per_second : float;
 var song_progress_line_speed : float;
 var pixels_per_second : float;
 
+var changing_scene : bool = false;
 
 @onready var grid_camera_offset = grid.global_position - camera.global_position;
 
@@ -153,4 +156,16 @@ func seconds_to_distance(seconds):
 func _on_time_sig_input_value_changed(new_spaces_per_beat):
 	var change_multiplier = new_spaces_per_beat/grid_spaces_per_beat;
 	change_spaces_per_beat(change_multiplier);
-	
+
+func _on_song_select_btn_pressed():
+	if !changing_scene:
+		changing_scene = true;
+		save_manager.save_chart();
+		scene_parameters["destination scene"] = scene_name;
+		change_scene.emit(scene_name, "chart select");
+
+func _on_menu_btn_pressed():
+	if !changing_scene:
+		changing_scene = true;
+		save_manager.save_chart();
+		change_scene.emit(scene_name, "main menu");
