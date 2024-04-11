@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2sxudyrer84p"
+path="res://.godot/imported/Like That (Short ver).mp3-a56ab492c67a9c8e98337abe4c9de1f6.mp3str"
+
+[deps]
+
+source_file="res://Base Levels/Pre-imported songs (Drag to your song file)/Like That (Short ver).mp3"
+dest_files=["res://.godot/imported/Like That (Short ver).mp3-a56ab492c67a9c8e98337abe4c9de1f6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

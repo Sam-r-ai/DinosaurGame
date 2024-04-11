@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chkl0qd0iln60"
+path="res://.godot/imported/Novacane.mp3-bb009f5dd39d59c0a32f3af3d77e9a11.mp3str"
+
+[deps]
+
+source_file="res://Base Levels/Pre-imported songs (Drag to your song file)/Novacane.mp3"
+dest_files=["res://.godot/imported/Novacane.mp3-bb009f5dd39d59c0a32f3af3d77e9a11.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

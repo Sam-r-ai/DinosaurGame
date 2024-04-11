@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cy33l7y3l5y4u"
+path="res://.godot/imported/Sucka For Love.mp3-fee67158f431aab17c018163085e827b.mp3str"
+
+[deps]
+
+source_file="res://Base Levels/Pre-imported songs (Drag to your song file)/Sucka For Love.mp3"
+dest_files=["res://.godot/imported/Sucka For Love.mp3-fee67158f431aab17c018163085e827b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

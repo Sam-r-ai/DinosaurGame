@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxa1wauf48gcj"
+path="res://.godot/imported/Future, Metro Boomin, Kendrick Lamar - Like That (Official Audio).mp3-030a2fcae75ce653c9138839a27d3112.mp3str"
+
+[deps]
+
+source_file="res://Base Levels/Pre-imported songs (Drag to your song file)/Future, Metro Boomin, Kendrick Lamar - Like That (Official Audio).mp3"
+dest_files=["res://.godot/imported/Future, Metro Boomin, Kendrick Lamar - Like That (Official Audio).mp3-030a2fcae75ce653c9138839a27d3112.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
