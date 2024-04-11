@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://doswc14c0og5p"]
+[gd_scene load_steps=12 format=3 uid="uid://doswc14c0og5p"]
 
 [ext_resource type="Script" path="res://Scripts/Chart Select/chart_select_menu.gd" id="1_7hymb"]
 [ext_resource type="PackedScene" uid="uid://cbakb505pt4ew" path="res://Scenes/Prefabs/chartbutton.tscn" id="2_0n2hu"]
@@ -7,6 +7,29 @@
 [ext_resource type="Script" path="res://Scripts/Chart Editor/editor_ui_button.gd" id="5_2h1nx"]
 [ext_resource type="PackedScene" uid="uid://ctuegpkadmebu" path="res://Scenes/Prefabs/status_display.tscn" id="5_jy4dv"]
 [ext_resource type="Texture2D" uid="uid://bhmhc47c3unkn" path="res://Graphics Assets/Main Menu/backbutton.png" id="7_vs4ve"]
+[ext_resource type="Texture2D" uid="uid://dngmmaulbh2pc" path="res://Graphics Assets/Chart Select/ChooseAChart.png" id="8_aufuf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur15h"]
+atlas = ExtResource("8_aufuf")
+region = Rect2(0, 0, 70, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux66o"]
+atlas = ExtResource("8_aufuf")
+region = Rect2(70, 0, 70, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pxue3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur15h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux66o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="ChartSelectMenu" type="Control" node_paths=PackedStringArray("new_chart_button", "create_chart_window", "file_button_container", "chart_button_container", "status_display", "back_button")]
 layout_mode = 3
@@ -63,6 +86,7 @@ script = ExtResource("5_2h1nx")
 metadata/_edit_lock_ = true
 
 [node name="NewChartBtn" type="Button" parent="FileAccessBtns"]
+visible = false
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 text = "Create Chart
@@ -74,6 +98,7 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 offset_right = 905.0
 offset_bottom = 646.0
+metadata/_edit_lock_ = true
 
 [node name="ChartBtns" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -203,6 +228,14 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(5, 5)
 texture_normal = ExtResource("7_vs4ve")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 120)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_pxue3")
+autoplay = "default"
+frame = 1
+frame_progress = 0.196197
 
 [connection signal="chart_initialized" from="ChartCreator" to="." method="select_chart"]
 [connection signal="pressed" from="FileAccessBtns/AddSongsBtn" to="FileAccessBtns/AddSongsBtn" method="open_songs_dir"]

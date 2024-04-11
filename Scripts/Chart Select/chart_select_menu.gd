@@ -117,7 +117,15 @@ func create_chart_access_button(chart_name : String, chart_path : String):
 	var new_button = chart_button_scene.instantiate();
 	new_button.assigned_chart = chart_name;
 	new_button.chart_path = chart_path;
-	new_button.text = new_button.assigned_chart;
+	
+	var button_text : String = new_button.assigned_chart;
+	
+	var length = button_text.length();
+	print(length);
+	
+	button_text = button_text.get_slice(".",0);
+	
+	new_button.text = button_text;
 	chart_button_container.add_child(new_button);
 	
 	buttons_created += 1;
