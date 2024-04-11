@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b32mhccdfexi7"]
+[gd_scene load_steps=4 format=3 uid="uid://b32mhccdfexi7"]
 
 [ext_resource type="Script" path="res://Scripts/settings scene/settings_scene.gd" id="1_sh663"]
 [ext_resource type="Texture2D" uid="uid://bhmhc47c3unkn" path="res://Graphics Assets/Main Menu/backbutton.png" id="2_5xhh1"]
+[ext_resource type="Theme" uid="uid://u2vkss84xngl" path="res://Graphics Assets/default_theme.tres" id="3_kmg3l"]
 
 [node name="SettingsScene" type="Node2D"]
 script = ExtResource("1_sh663")
@@ -63,5 +64,15 @@ offset_bottom = 330.0
 text = "k"
 alignment = 1
 max_length = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 219.0
+offset_top = 74.0
+offset_right = 915.0
+offset_bottom = 161.0
+theme = ExtResource("3_kmg3l")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "UNDER CONSTRUCTION"
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

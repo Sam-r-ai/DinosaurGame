@@ -32,6 +32,8 @@ var song_started : bool = false;
 @export var dino : DinoCharacter;
 @export var dino_close_up : AnimatedSprite2D;
 
+@export var status_display : StatusDisplay;
+
 var song_start_timer : SceneTreeTimer;
 
 var max_score : int = 0;
@@ -58,6 +60,17 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("Cheat"):
 		end_song_cheat();
+	
+	if Input.is_action_just_pressed("Cheat - Bot Play"):
+		toggle_bot_play();
+
+func toggle_bot_play():
+	if bot_play_active:
+		bot_play_active = false;
+		status_display.display_message("Bot Play Disabled");
+	else:
+		bot_play_active = true;
+		status_display.display_message("Bot Play Active");
 
 func update_score_display():
 	score_display.text = "Score: " + str(score);
@@ -125,6 +138,7 @@ func load_triggers():
 		
 		track.add_child(new_trigger);
 		new_trigger.global_position.x = trigger_reciever.global_position.x;
+		new_trigger.visible = false;
 
 func fall_down():
 	if !song_started:

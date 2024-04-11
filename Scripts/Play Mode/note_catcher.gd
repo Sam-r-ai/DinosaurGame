@@ -13,8 +13,6 @@ extends Area2D
 
 @onready var catcher_size = 80;
 
-@onready var bot_play_active = play_mode.bot_play_active;
-
 func _ready():
 	randomize();
 
@@ -36,7 +34,7 @@ func _physics_process(delta):
 			if !hit_particle_emitter.emitting:
 				hit_particle_emitter.emitting = true;
 	
-	if bot_play_active:
+	if play_mode.bot_play_active:
 		var note = get_lowest_note();
 		if note and note.global_position.y >= global_position.y-20:
 			hit_note(note);
@@ -56,16 +54,16 @@ func hit_note(note : ChartNote):
 	note.on_hit();
 	anim_player.play("hit");
 	
-	#var new_hit_particle = hit_particle_scene.instantiate();
-	#add_child(new_hit_particle);
-	#new_hit_particle.emitting = true;
-	
 	play_mode.score += 50*score_multiplier;
 	play_mode.update_score_display();
 	
 	dino.anim.play("note_hit");
 	dino.anim.seek(0);
-	dino.frame = randi_range(1,5);
+	var previous_pose = dino.frame;
+	var new_pose = randi_range(1,4);
+	if new_pose >= previous_pose:
+		new_pose += 1;
+	dino.frame = new_pose;
 	dino_close_up.frame = lane;
 	if dino_close_up.fly_anim_finished:
 		dino_close_up.anim.play("note_hit");

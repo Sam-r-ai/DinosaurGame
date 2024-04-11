@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://2j0scq6o8os4"]
+[gd_scene load_steps=46 format=3 uid="uid://2j0scq6o8os4"]
 
 [ext_resource type="Script" path="res://Scripts/Play Mode/play_mode.gd" id="1_1miux"]
 [ext_resource type="PackedScene" uid="uid://dvtnux5cehs7f" path="res://Scenes/Prefabs/note.tscn" id="2_0o1h3"]
@@ -16,8 +16,9 @@
 [ext_resource type="Script" path="res://Scripts/Play Mode/dino.gd" id="11_5ncnn"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/trigger_reciever.gd" id="12_lur83"]
 [ext_resource type="Script" path="res://Scripts/Play Mode/results_display.gd" id="15_lxht7"]
-[ext_resource type="PackedScene" uid="uid://datgq6olycrpr" path="res://Scenes/Prefabs/rank_display.tscn" id="16_5c02x"]
+[ext_resource type="PackedScene" uid="uid://byw5q4o1poypo" path="res://Scenes/Prefabs/rank_display.tscn" id="16_5c02x"]
 [ext_resource type="Texture2D" uid="uid://du1a1fiji8b4t" path="res://Graphics Assets/Play Mode/ResultsDisplay.png" id="16_lx43k"]
+[ext_resource type="PackedScene" uid="uid://ctuegpkadmebu" path="res://Scenes/Prefabs/status_display.tscn" id="19_2j82q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umqgk"]
 size = Vector2(64, 20)
@@ -312,7 +313,7 @@ script/source = "extends ProgressBar
 @export var label : Label;
 "
 
-[node name="PlayMode" type="Node2D" node_paths=PackedStringArray("track", "song_player", "note_catcher", "trigger_reciever", "results_display", "start_label", "pause_menu", "score_display", "dino", "dino_close_up")]
+[node name="PlayMode" type="Node2D" node_paths=PackedStringArray("track", "song_player", "note_catcher", "trigger_reciever", "results_display", "start_label", "pause_menu", "score_display", "dino", "dino_close_up", "status_display")]
 process_mode = 1
 script = ExtResource("1_1miux")
 pixels_per_second = 600
@@ -329,6 +330,7 @@ pause_menu = NodePath("UI/PauseMenu")
 score_display = NodePath("UI/GameInfo/ScoreDisplay")
 dino = NodePath("Characters/Dino")
 dino_close_up = NodePath("Characters/CloseUp")
+status_display = NodePath("UI/StatusDisplay")
 scene_name = "play mode"
 
 [node name="SongPlayer" type="AudioStreamPlayer" parent="."]
@@ -430,7 +432,7 @@ libraries = {
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1201.0
-offset_bottom = 679.0
+offset_bottom = 648.0
 
 [node name="GameInfo" type="Control" parent="UI"]
 anchors_preset = 0
@@ -650,6 +652,16 @@ horizontal_alignment = 1
 
 [node name="ResumeTimer" type="Timer" parent="UI/PauseMenu"]
 wait_time = 3.0
+
+[node name="StatusDisplay" parent="UI" instance=ExtResource("19_2j82q")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+offset_right = 197.0
+offset_bottom = 0.0
+grow_vertical = 0
 
 [connection signal="finished" from="SongPlayer" to="." method="_on_song_player_finished"]
 [connection signal="area_entered" from="NoteCatchers/Trigger Reciever" to="NoteCatchers/Trigger Reciever" method="_on_area_entered"]
