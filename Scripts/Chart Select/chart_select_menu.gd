@@ -19,6 +19,9 @@ var charts_directory : String;
 
 func _ready():
 	charts_directory = OS.get_user_data_dir() + "/Charts/";
+	
+	check_charts_dir_exists();
+	
 	get_chart_files_in_dir(charts_directory);
 
 func load_scene_parameters(new_scene_parameters):
@@ -99,6 +102,8 @@ func _on_cancel_btn_pressed():
 			button.disabled = false;
 
 func get_chart_files_in_dir(path):
+	check_charts_dir_exists();
+	
 	var dir = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
@@ -156,3 +161,10 @@ func _on_back_button_pressed():
 	back_button.disabled = true;
 	
 	change_scene.emit(scene_name, "main menu");
+
+func check_charts_dir_exists():
+	if DirAccess.dir_exists_absolute(charts_directory):
+		print("directory exists");
+	else:
+		print("directory does not exist");
+		DirAccess.make_dir_absolute(charts_directory);

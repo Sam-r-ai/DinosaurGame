@@ -8,14 +8,13 @@ signal chart_initialized(path);
 @export var bpm_field : SpinBox;
 @export var name_field : LineEdit;
 
+@onready var songs_directory = OS.get_user_data_dir() + "/Songs";
+
 var song_option_dictionary = {};
-
-var user_song_dictionary = {};
-
 var song_count : int = 0;
 
 func _ready():
-	var songs_directory = OS.get_user_data_dir() + "/Songs";
+	check_songs_dir_exists();
 	get_user_audio_streams_in_dir();
 
 func get_audio_streams_in_dir(path):
@@ -33,6 +32,8 @@ func get_audio_streams_in_dir(path):
 			file_name = dir.get_next()
 
 func get_user_audio_streams_in_dir():
+	check_songs_dir_exists();
+	
 	song_field.clear();
 	song_option_dictionary.clear();
 	song_count = 0;
@@ -92,3 +93,10 @@ func load_mp3(path):
 	var sound = AudioStreamMP3.new()
 	sound.data = file.get_buffer(file.get_length())
 	return sound
+
+func check_songs_dir_exists():
+	if DirAccess.dir_exists_absolute(songs_directory):
+		print("directory exists");
+	else:
+		print("directory does not exist");
+		DirAccess.make_dir_absolute(songs_directory);
